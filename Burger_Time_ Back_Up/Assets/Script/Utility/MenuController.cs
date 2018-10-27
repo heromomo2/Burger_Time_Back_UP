@@ -10,7 +10,7 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] private Canvas m_LeaderBoardCanvas;
 	[SerializeField] private Canvas m_PauseCanvas;
 	#endregion
-	#region Public Funtion
+	#region Public Funtio
 	public void OpenMainMenu()
 	{
 		if (m_MainMeunCanvas != null && m_LeaderBoardCanvas  != null)
@@ -29,11 +29,19 @@ public class MenuController : MonoBehaviour {
 			Debug.Log (" you pass");
 		}
 	}
+	public void ClosePauseMenu()
+	{
+		if (m_PauseCanvas != null)   
+		{ 
+			m_PauseCanvas.enabled = false;	
+			Debug.Log (" You Close PauseMenu");	
+		}
+	}
 	public void OpenPauseMenu()
 	{
 		if (m_PauseCanvas != null)   
 		{ 
-	      m_PauseCanvas.enabled = true;	
+			m_PauseCanvas.enabled = true;	
 		  Debug.Log (" You Open PauseMenu");	
 		}
 	}

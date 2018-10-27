@@ -5,9 +5,10 @@ using UnityEngine;
 public class BurgerBit : MonoBehaviour {
 
 	#region member variables
-	private Transform m_Target;
 	private bool m_IsStepped = false;
+	private bool m_IsOnPlate = false;
 	#endregion
+
 
 	#region Public fuctions
 	public bool GetIsStepped
@@ -24,19 +25,18 @@ public class BurgerBit : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D Other)
 	{
 		if(Other.tag == "Player")
-		{
-			Pushdown ();
+		{/* To check  if the bit is touching player*/
+			m_IsStepped = true;
+		//	Debug.Log("IsStepped:  true ");
 		}
+		if(Other.tag == "Plate")
+		{ /* To check  if the bit is touching plate 
+		at bottom of the level*/
+			m_IsOnPlate = true;
+		}
+
 	}
 	#endregion
 
-	#region private fuctions
-	private void Pushdown () 
-	{
-		/*To do:  Move the bit little amont down after being step on,
-		 * but don't send it down all the away*/ 
-		//target =  target.ve
-		m_IsStepped = true;
-	}
-	#endregion
+
 }

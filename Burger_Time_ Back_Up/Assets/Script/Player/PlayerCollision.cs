@@ -32,6 +32,11 @@ public class PlayerCollision : MonoBehaviour {
 			Debug.Log ("You are on TopPoint");
 			m_PlayerInputController.SetIsOnTopPoint = true;
 		}
+		if(Other.tag == "BottomPoint")
+		{
+			Debug.Log ("You are on BottomPoint");
+			m_PlayerInputController.SetIsOnBottomPoint = true;
+		}
 	}
 	void OnTriggerEnter2D(Collider2D Other)
 	{
@@ -58,7 +63,12 @@ public class PlayerCollision : MonoBehaviour {
 		if(Other.tag == "TopPoint")
 		{
 			Debug.Log ("You are off TopPoint");
-			m_PlayerInputController.SetIsOnTopPoint = true;
+			m_PlayerInputController.SetIsOnTopPoint = false;
+		}
+		if(Other.tag == "BottomPoint")
+		{
+			Debug.Log ("You are off BottomPoint");
+			m_PlayerInputController.SetIsOnBottomPoint = false;
 		}
 	}
 }

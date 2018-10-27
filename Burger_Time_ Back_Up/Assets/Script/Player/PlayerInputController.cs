@@ -3,28 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInputController : MonoBehaviour {
-	#region
+	#region   Variables
 	[SerializeField] private MenuController m_MenuController;
 	private bool  m_IsPepperused = false; 
 	private bool  m_IsOnLadder = false;
 	private bool  m_IsOnExistPoint = false; 
 	private bool  m_IsOnTopPoint = false;
+	private bool  m_IsOnBottomPoint = false;
 	[SerializeField] private int speed;
 	#endregion
 
-	#region Setter and getter
-	public bool GetIsOnLadder
-	{
-		get {return m_IsOnLadder;}
-	}
+	#region Setter
 	public bool SetIsOnLadder
 	{
 		set { m_IsOnLadder = value;}
-	}
-
-	public bool GetIsOnExistPoint
-	{
-		get {return m_IsOnExistPoint;}
 	}
 	public bool SetIsOnExistPoint
 	{
@@ -34,11 +26,15 @@ public class PlayerInputController : MonoBehaviour {
 	{
 		set { m_IsOnTopPoint  = value;}
 	}
+	public bool SetIsOnBottomPoint
+	{
+		set { m_IsOnBottomPoint  = value;}
+	}
 	#endregion
+
 	// Use this for initialization
 	void Start () 
 	{
-		//Debug.Log (" Start is working");
 		m_MenuController = m_MenuController.GetComponent<MenuController>();
 	}
 	
@@ -46,9 +42,10 @@ public class PlayerInputController : MonoBehaviour {
 	void Update () 
 	{
 		GetInput2 ();
-		//Debug.Log (" Update is working");
+	
 	}
-
+	/* test pepper being pressed
+	*/
 	void OnGUI()
 	{
 		if (!m_IsPepperused)
@@ -60,7 +57,7 @@ public class PlayerInputController : MonoBehaviour {
 		GUI.Label(new Rect(10, 350, 100, 20), "Peper haven be used");
 		}
 	}
-
+	/* Player input is done here	*/
 
 	private void GetInput2()
 	{
@@ -91,16 +88,15 @@ public class PlayerInputController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.S))
 		{
 			//Debug.Log (" Skey was pressed");
-			if (m_IsOnLadder) 
+			if (m_IsOnLadder&&!m_IsOnBottomPoint) 
 			{
 			transform.Translate (Vector3.down * speed * Time.deltaTime);
 			}
 		}
-			
 		if (Input.GetKeyDown(KeyCode.P))
 		{
 			Debug.Log (" Pkey was pressed");
-			m_MenuController.OpenPauseMenu ();  
+			m_MenuController.OpenPauseMenu (); 
 		}
 
 		if (Input.GetKeyDown(KeyCode.Return))
