@@ -6,44 +6,41 @@ public class BurgerSlice : MonoBehaviour {
 
 	[SerializeField]
 	private List<BurgerBit> m_BurgerSlice;
-	private  Transform m_Target;
-	[SerializeField]
-	private  float m_Yaix = 2.0f;
 	[SerializeField]
 	private  float m_Speed = 1.0f;
 	private  float m_step;
+	private  Vector3 m_originPositon; 
+	private  Vector3 m_Target;
+	private  bool m_IsMoving = false;
 
+	public Vector3 OriginPositon
+	{
+		get{return m_originPositon;}
+	}
 
 	// Use this for initialization
 	void Start () {
-		
+		m_originPositon = transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		CheckABurgerBitAreTrue ();
 		if (CheckAllBurgerBitAreTrue ()) 
 		{
-			Debug.Log(" all the bits have been step on");
+		//	Debug.Log(" all the bits have been step on");
+			if(!m_IsMoving)
+			{
+				m_IsMoving = true;
+				m_Target = transform.position + Vector3.down;
+				//transform.localPosition = transform.localPosition + (Vector3.up * m_DownFactor);
+			}
 			MoveBurgerSlice ();
 		}
-	    m_step = m_Speed * Time.deltaTime;
 	}
 
 	#region private fuctions
-	private void PushBitdown ( BurgerBit m_bit) 
-	{
-		/*To do:  Move the bit little amont down after being step on,
-		 * but don't send it down all the away*/ 
 
-		Debug.Log("PushBitdown has been call");
-	/*	m_Target.position = m_bit.transform.position + new Vector3(0.0f,2.0f,0.0f);
-		if( m_Target.position != null)
-		{
-			m_bit.transform.position = Vector3.MoveTowards (m_bit.transform.position, m_Target.position, m_step);
-		} */
-	}
 	private  bool CheckAllBurgerBitAreTrue()
 	{
 		foreach (BurgerBit elements in m_BurgerSlice )
@@ -51,7 +48,7 @@ public class BurgerSlice : MonoBehaviour {
 		  /* to do: check all the bits have been  step on. 
 		   * then call the MoveBurgerSlice() */ 
 
-			if (!elements.GetIsStepped) 
+			if (!elements.IsStepped) 
 			{
 				return false;
 			}
@@ -59,27 +56,36 @@ public class BurgerSlice : MonoBehaviour {
 		return true;
 	}
 
-
-	private void CheckABurgerBitAreTrue()
-	{
-		foreach (BurgerBit elements in m_BurgerSlice )
-		{
-			if (elements.GetIsStepped) 
-			{ // If a bit is Step on then all call th
-				PushBitdown ( elements);
-				Debug.Log(" One bits have been step on");
-			}
-		}
-	}
-
 	private void MoveBurgerSlice()
 	{
-		foreach (BurgerBit elements in m_BurgerSlice )
+	/* to do:  move the all the bits 
+	* down to next  platform.*/
+		m_step = m_Speed * Time.deltaTime;
+		transform.position = Vector3.MoveTowards (transform.position, m_Target, m_step);
+		//retset
+		if (m_IsMoving)
 		{
-			/* to do:  move the all the bits 
-			 * down to next  platform.*/
-			Debug.Log("MoveBurgerSlice has been call");
+			if(transform.position == m_Target)
+			{
+				m_IsMoving = false;
+				foreach (BurgerBit elements in m_BurgerSlice) 
+				{
+					elements.Reset ();
+					//elements.transform.localPosition = elements.transform.localPosition + (Vector3.down * elements.DownFactor);
+				}
+			} 
 		}
 	}
 	#endregion
+
+	void OnTriggerEnter2D(Collider2D Other)
+	{
+		if (Other.tag == "BurgerPart" && CheckAllBurgerBitAreTrue() ) 
+		{
+			//Debug.Log ("BurgerPart!!!!!!!!");
+
+			m_Target = Other.GetComponent<BurgerSlice>().OriginPositon;
+
+		}
+	}
 }

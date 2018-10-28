@@ -9,6 +9,8 @@ TagManager:
   - TopPoint
   - BottomPoint
   - Plate
+  - Burger
+  - BurgerPart
   layers:
   - Default
   - TransparentFX

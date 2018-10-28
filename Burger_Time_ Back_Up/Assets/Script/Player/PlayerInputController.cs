@@ -10,7 +10,7 @@ public class PlayerInputController : MonoBehaviour {
 	private bool  m_IsOnExistPoint = false; 
 	private bool  m_IsOnTopPoint = false;
 	private bool  m_IsOnBottomPoint = false;
-	[SerializeField] private int speed;
+	[SerializeField] private float speed;
 	#endregion
 
 	#region Setter
@@ -61,7 +61,7 @@ public class PlayerInputController : MonoBehaviour {
 
 	private void GetInput2()
 	{
-		if (Input.GetKeyDown(KeyCode.A))
+		if (Input.GetKey(KeyCode.A))
 		{
 			//Debug.Log (" Akey was pressed");
 			if (!m_IsOnLadder || m_IsOnExistPoint) 
@@ -69,7 +69,7 @@ public class PlayerInputController : MonoBehaviour {
 				transform.Translate (Vector3.left * speed * Time.deltaTime);
 			}
 		} 
-		if (Input.GetKeyDown(KeyCode.D))
+		if (Input.GetKey(KeyCode.D))
 		{
 			//Debug.Log (" Dkey was pressed");
 			if (!m_IsOnLadder|| m_IsOnExistPoint) 
@@ -77,7 +77,7 @@ public class PlayerInputController : MonoBehaviour {
 				transform.Translate (Vector3.right * speed * Time.deltaTime);
 			}
 		}
-		if (Input.GetKeyDown(KeyCode.W))
+		if (Input.GetKey(KeyCode.W))
 		{
 			//Debug.Log (" Wkey was pressed");
 			if(m_IsOnLadder&&!m_IsOnTopPoint )
@@ -85,7 +85,7 @@ public class PlayerInputController : MonoBehaviour {
 			transform.Translate(Vector3.up*speed *Time.deltaTime);
 			}
 		}
-		if (Input.GetKeyDown(KeyCode.S))
+		if (Input.GetKey(KeyCode.S))
 		{
 			//Debug.Log (" Skey was pressed");
 			if (m_IsOnLadder&&!m_IsOnBottomPoint) 
