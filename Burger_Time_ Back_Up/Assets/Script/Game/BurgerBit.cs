@@ -26,7 +26,7 @@ public class BurgerBit : MonoBehaviour {
 	public void Reset()
 	{
 		m_IsStepped = false;
-		transform.localPosition = transform.localPosition + (Vector3.down * m_DownFactor);
+	 	transform.localPosition = transform.localPosition + (Vector3.down * m_DownFactor);
 		//Debug.Log("Reset");
 	}
 	#region Collison
@@ -56,4 +56,5 @@ public class BurgerBit : MonoBehaviour {
 		//Debug.Log("PushBitdown has been call");
 		transform.localPosition = transform.localPosition + (Vector3.up * m_DownFactor);
 	}
+
 }
