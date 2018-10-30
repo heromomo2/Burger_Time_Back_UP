@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212357860040164684}
   - component: {fileID: 61316272141735704}
   - component: {fileID: 114779215310990376}
+  - component: {fileID: 50429910734006792}
   m_Layer: 0
   m_Name: Lettuce_Bit (1)
-  m_TagString: Untagged
+  m_TagString: Burger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,9 +41,10 @@ GameObject:
   - component: {fileID: 212031654523142296}
   - component: {fileID: 61941551612374930}
   - component: {fileID: 114155452908361154}
+  - component: {fileID: 50394212045614482}
   m_Layer: 0
   m_Name: Lettuce_Bit (2)
-  m_TagString: Untagged
+  m_TagString: Burger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,9 +58,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4955246234367586}
   - component: {fileID: 114766750007892184}
+  - component: {fileID: 50024992120473378}
+  - component: {fileID: 61472441894413252}
   m_Layer: 0
   m_Name: Lettuce_Slince
-  m_TagString: Untagged
+  m_TagString: BurgerPart
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,9 +78,10 @@ GameObject:
   - component: {fileID: 212144865669919916}
   - component: {fileID: 61441271287313392}
   - component: {fileID: 114743012391183954}
+  - component: {fileID: 50391834925259654}
   m_Layer: 0
   m_Name: Lettuce_Bit (3)
-  m_TagString: Untagged
+  m_TagString: Burger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,9 +97,10 @@ GameObject:
   - component: {fileID: 212196912068983276}
   - component: {fileID: 61765644209947740}
   - component: {fileID: 114269769546968764}
+  - component: {fileID: 50421156231619472}
   m_Layer: 0
   m_Name: Lettuce_Bit (4)
-  m_TagString: Untagged
+  m_TagString: Burger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1907275356834720}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.21385527, y: -0.096827775, z: 0.0017770457}
+  m_LocalPosition: {x: 0.21385527, y: -0.09682778, z: 0.0017770457}
   m_LocalScale: {x: 0.07568216, y: 0.07568218, z: 0.07568218}
   m_Children: []
   m_Father: {fileID: 4955246234367586}
@@ -158,7 +164,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1230633561532404}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.8850553, y: 0.27682778, z: -0.0017770457}
+  m_LocalPosition: {x: -2.913, y: 0.281, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4388399084220902}
@@ -168,6 +174,106 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50024992120473378
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1230633561532404}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &50391834925259654
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1615823903053280}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &50394212045614482
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1220911970455686}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &50421156231619472
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907275356834720}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &50429910734006792
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1183906860187414}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61316272141735704
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -191,7 +297,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.54, y: 3}
+  m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
 --- !u!61 &61441271287313392
 BoxCollider2D:
@@ -216,7 +322,32 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.54, y: 3}
+  m_Size: {x: 2, y: 3}
+  m_EdgeRadius: 0
+--- !u!61 &61472441894413252
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1230633561532404}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.07812345, y: -0.09303236}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7881787, y: 0.26032686}
   m_EdgeRadius: 0
 --- !u!61 &61765644209947740
 BoxCollider2D:
@@ -241,7 +372,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.54, y: 3}
+  m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
 --- !u!61 &61941551612374930
 BoxCollider2D:
@@ -266,7 +397,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.54, y: 3}
+  m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
 --- !u!114 &114155452908361154
 MonoBehaviour:
@@ -279,6 +410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7397ed8e49e924f96825c3db41e757bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DownFactor: -0.2
 --- !u!114 &114269769546968764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -290,6 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7397ed8e49e924f96825c3db41e757bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DownFactor: -0.2
 --- !u!114 &114743012391183954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -301,6 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7397ed8e49e924f96825c3db41e757bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DownFactor: -0.2
 --- !u!114 &114766750007892184
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -312,13 +446,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85b47117b8ff4be785eaa26de224387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TargetSpot: {fileID: 0}
   m_BurgerSlice:
   - {fileID: 114269769546968764}
   - {fileID: 114743012391183954}
   - {fileID: 114155452908361154}
   - {fileID: 114779215310990376}
-  m_Yaix: 2
-  m_Speed: 1
+  m_Speed: 2.5
+  m_IsAtPlate: 0
 --- !u!114 &114779215310990376
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7397ed8e49e924f96825c3db41e757bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_DownFactor: -0.2
 --- !u!212 &212031654523142296
 SpriteRenderer:
   m_ObjectHideFlags: 1

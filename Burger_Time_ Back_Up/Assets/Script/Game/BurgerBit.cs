@@ -9,7 +9,7 @@ public class BurgerBit : MonoBehaviour {
 	private float m_DownFactor;
 	#region member variables
 	private bool m_IsStepped = false;
-	private bool m_IsOnPlate = false;
+	//private bool m_IsOnPlate = false;
 	#endregion
 
 	#region Public fuctions
@@ -26,7 +26,7 @@ public class BurgerBit : MonoBehaviour {
 	public void Reset()
 	{
 		m_IsStepped = false;
-	 	transform.localPosition = transform.localPosition + (Vector3.down * m_DownFactor);
+	 	//transform.localPosition = transform.localPosition + (Vector3.down * m_DownFactor);
 		//Debug.Log("Reset");
 	}
 	#region Collison
@@ -38,14 +38,14 @@ public class BurgerBit : MonoBehaviour {
 			{
 				m_IsStepped = true;
 				//	Debug.Log("IsStepped:  true ");
-				PushBitdown ();
+				//PushBitdown ();
 			}
 		}
-		if(Other.tag == "Plate")
-		{ /* To check  if the bit is touching plate 
-		at bottom of the level*/
+		/*if(Other.tag == "Plate")
+		{  To check  if the bit is touching plate 
+		at bottom of the level
 			m_IsOnPlate = true;
-		}
+		}*/
 	}
 	#endregion
 

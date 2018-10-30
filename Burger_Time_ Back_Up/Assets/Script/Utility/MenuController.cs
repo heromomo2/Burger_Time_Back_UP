@@ -35,6 +35,7 @@ public class MenuController : MonoBehaviour {
 		{ 
 			m_PauseCanvas.enabled = false;	
 			Debug.Log (" You Close PauseMenu");	
+			Time.timeScale = 1;
 		}
 	}
 	public void OpenPauseMenu()
@@ -42,7 +43,8 @@ public class MenuController : MonoBehaviour {
 		if (m_PauseCanvas != null)   
 		{ 
 			m_PauseCanvas.enabled = true;	
-		  Debug.Log (" You Open PauseMenu");	
+		  Debug.Log (" You Open PauseMenu");
+			Time.timeScale = 0;
 		}
 	}
 	public void Quit()
@@ -53,6 +55,7 @@ public class MenuController : MonoBehaviour {
 	{
 		Debug.Log ("sceneName to load:" + scenename);
 		SceneManager.LoadScene (scenename);
+		Time.timeScale = 1;
 	}
 	#endregion
 

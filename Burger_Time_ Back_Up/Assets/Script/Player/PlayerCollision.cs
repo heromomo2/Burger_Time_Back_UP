@@ -19,7 +19,7 @@ public class PlayerCollision : MonoBehaviour {
 	{
 		if(Other.tag == "Ladder")
 		{
-			Debug.Log ("You are on ladder");
+		//	Debug.Log ("You are on ladder");
 			m_PlayerInputController.SetIsOnLadder = true;
 		}
 		if(Other.tag == "ExistPoint")
@@ -29,12 +29,12 @@ public class PlayerCollision : MonoBehaviour {
 		}
 		if(Other.tag == "TopPoint")
 		{
-			Debug.Log ("You are on TopPoint");
+		//	Debug.Log ("You are on TopPoint");
 			m_PlayerInputController.SetIsOnTopPoint = true;
 		}
 		if(Other.tag == "BottomPoint")
 		{
-			Debug.Log ("You are on BottomPoint");
+		//	Debug.Log ("You are on BottomPoint");
 			m_PlayerInputController.SetIsOnBottomPoint = true;
 		}
 	}
@@ -42,7 +42,7 @@ public class PlayerCollision : MonoBehaviour {
 	{
 		if(Other.tag == "Ladder")
 		{
-			Debug.Log ("You are on ladder");
+		//	Debug.Log ("You are on ladder");
 			m_PlayerInputController.SetIsOnLadder = true;
 		}
 	}
@@ -51,7 +51,7 @@ public class PlayerCollision : MonoBehaviour {
 	{
 		if(Other.tag == "Ladder")
 		{
-			Debug.Log ("You are off ladder");
+		//	Debug.Log ("You are off ladder");
 			m_PlayerInputController.SetIsOnLadder = false;
 		}
 		if(Other.tag == "ExistPoint")
@@ -62,12 +62,12 @@ public class PlayerCollision : MonoBehaviour {
 
 		if(Other.tag == "TopPoint")
 		{
-			Debug.Log ("You are off TopPoint");
+		//	Debug.Log ("You are off TopPoint");
 			m_PlayerInputController.SetIsOnTopPoint = false;
 		}
 		if(Other.tag == "BottomPoint")
 		{
-			Debug.Log ("You are off BottomPoint");
+		//	Debug.Log ("You are off BottomPoint");
 			m_PlayerInputController.SetIsOnBottomPoint = false;
 		}
 	}
