@@ -12,7 +12,7 @@ public class BurgerSlice : MonoBehaviour {
 	[SerializeField]
 	private  float m_Speed = 1.0f;
 	private  float m_step;
-	//[SerializeField]
+	[SerializeField]
 	private  int m_Index= 1;
 	private  Vector3 m_originPositon; 
 	private  Vector3 m_Target;
@@ -89,9 +89,9 @@ public class BurgerSlice : MonoBehaviour {
 			if(transform.position == m_Target)
 			{/* If we are at our target position then set M_IsMoving to false.
               *Reset all the bits m_IsStepped to false and reverse the PushBitdown()function.*/
-				m_originPositon = transform.position;
+				//m_originPositon = transform.position;
 				m_IsMoving = false;
-				m_Index += 1 ;m_Index += 1 ;
+				m_Index = Mathf.Min(++m_Index, m_TargetSpots.Count-1) ;
 				foreach (BurgerBit elements in m_BurgerSlice) 
 				{   //Retset
 					elements.Reset ();
@@ -108,14 +108,14 @@ public class BurgerSlice : MonoBehaviour {
 		{/* If two BurgerSlices are touching and all bits have been stepped on then 
 		  * set our target to the same position as other slice origin-position.*/
 			Debug.Log (" The BurgerSlices are touch ");
-		      	//m_Target = Other.GetComponent<BurgerSlice>().OriginPositon;
-			//m_Target = m_TargetSpots[m_Index].transform.position;
+		     // 	m_Target = Other.GetComponent<BurgerSlice>().OriginPositon;
+			 m_Target = m_TargetSpots[m_Index].transform.position;
 			m_IsAtPlate = Other.GetComponent<BurgerSlice>().IsAtPlate;
 		}
 		if (Other.tag == "Plate") 
 		{
 			m_IsAtPlate = true;
-			//m_Index = 0;
+			m_Index = m_TargetSpots.Count - 1;
 			Debug.Log (" The BurgerSlices are touch are touching the plate.");
 		}
 	}
