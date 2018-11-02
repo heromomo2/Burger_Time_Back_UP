@@ -6,8 +6,6 @@ public class BurgerSlice : MonoBehaviour {
 	[SerializeField]
 	private List<GameObject> m_TargetSpots;
 	[SerializeField]
-	private GameObject m_TargetSpot;
-	[SerializeField]
 	private List<BurgerBit> m_BurgerSlice;
 	[SerializeField]
 	private  float m_Speed = 1.0f;
