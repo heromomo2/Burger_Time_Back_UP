@@ -101,7 +101,7 @@ public class PlayerInputController : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
-			Debug.Log (" Enter was pressed");
+			Debug.LogWarning("Enter was pressed. Pepper have been throwd");
 			m_IsPepperused = true;
 		}
 	}
