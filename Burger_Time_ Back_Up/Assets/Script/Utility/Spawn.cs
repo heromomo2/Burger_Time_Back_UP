@@ -9,7 +9,7 @@ public class Spawn : MonoBehaviour {
 	[SerializeField]
 	private Transform m_Target = null;
 
-	private List<EnemyController> m_Enemies = new List<EnemyController>();
+	private List<EnemyController> m_Enemies = new List<EnemyController>(); // help keep track of enemies
 	private List<EnemyController> m_EnemiesRemoveList = new List<EnemyController>();
 
 
@@ -21,17 +21,16 @@ public class Spawn : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		foreach (EnemyController enemy in m_EnemiesRemoveList)
+		/*foreach (EnemyController enemy in m_EnemiesRemoveList)
 		{
 			// TO DO: remove any enemies have dea
 			m_Enemies.Remove (enemy);
-
-		}
+		}*/
 		
 	}
-	public void SpawnEnemy(float timeToTarget)
+	public void SpawnEnemy()
 	{
-		/* TO DO: .Spawns an Enemy and  add it the list.*/
+		/* TODO: .Spawns an Enemy and  add it the list.*/
 		/*GameObject temp = Instantiate<GameObject> (m_EnemyPrefab);
 		temp.transform.parent = this.transform;
 		temp.transform.localPosition = Vector3.zero;
@@ -40,11 +39,16 @@ public class Spawn : MonoBehaviour {
 		Debug.Log(" SpawnEnemy is being calling");*/
 	}
 
-	public void CheckIfEn()
+	public void CheckifEnemyIsdead()
 	{
-		/* TO DO: Return Currently list of Enemy.*/
+	/*TODO: check Currently a list of Enemy for dead enemies. 
+	 * Then remove them from the list and then call their destroy function.*/
 	}
-
+	public void DespawnAllEnemies()
+	{
+		/*TODO: Call the Destroy fuction in all  the Enemies. 
+		 * This will be call in ResetGame fuction within GsmeControll . */
+	}
 
 
 }
