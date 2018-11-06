@@ -11,6 +11,8 @@ TagManager:
   - Plate
   - Burger
   - BurgerPart
+  - Enemy
+  - Pepper
   layers:
   - Default
   - TransparentFX

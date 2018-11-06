@@ -38,7 +38,11 @@ public class EnemyCollision : MonoBehaviour {
 	{
 		if(Other.tag == "BurgerPart")
 		{
+			if (Other.GetComponent<BurgerSlice>().IsMoving == true)
+			{
 			m_IsTouchBurgerSlice = true;
+			//Debug.Log ("Enemy is touch burger slice");
+			}
 		}
 		if(Other.tag == "Pepper")
 		{

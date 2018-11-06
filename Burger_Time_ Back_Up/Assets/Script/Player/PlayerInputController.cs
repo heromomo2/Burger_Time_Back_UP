@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerInputController : MonoBehaviour {
 	#region   Variables
 	[SerializeField] private MenuController m_MenuController;
+	[SerializeField] private SpawnPeper m_SpawnPeper;
 	private bool  m_IsPepperused = false; 
 	private bool  m_IsOnLadder = false;
 	private bool  m_IsOnExistPoint = false; 
@@ -36,6 +37,7 @@ public class PlayerInputController : MonoBehaviour {
 	void Start () 
 	{
 		m_MenuController = m_MenuController.GetComponent<MenuController>();
+		//m_SpawnPeper = m_MenuController.GetComponent<SpawnPeper>();
 	}
 	
 	// Update is called once per frame
@@ -67,6 +69,8 @@ public class PlayerInputController : MonoBehaviour {
 			if (!m_IsOnLadder || m_IsOnExistPoint) 
 			{
 				transform.Translate (Vector3.left * speed * Time.deltaTime);
+				m_SpawnPeper.faceleft ();
+				// ok jhjhjhjhjhjhj
 			}
 		} 
 		if (Input.GetKey(KeyCode.D))
@@ -75,6 +79,7 @@ public class PlayerInputController : MonoBehaviour {
 			if (!m_IsOnLadder|| m_IsOnExistPoint) 
 			{
 				transform.Translate (Vector3.right * speed * Time.deltaTime);
+				m_SpawnPeper.faceright ();
 			}
 		}
 		if (Input.GetKey(KeyCode.W))
@@ -83,6 +88,7 @@ public class PlayerInputController : MonoBehaviour {
 			if(m_IsOnLadder&&!m_IsOnTopPoint )
 			{
 			transform.Translate(Vector3.up*speed *Time.deltaTime);
+				m_SpawnPeper.faceup();
 			}
 		}
 		if (Input.GetKey(KeyCode.S))
@@ -91,6 +97,7 @@ public class PlayerInputController : MonoBehaviour {
 			if (m_IsOnLadder&&!m_IsOnBottomPoint) 
 			{
 			transform.Translate (Vector3.down * speed * Time.deltaTime);
+				m_SpawnPeper.facedown();
 			}
 		}
 		if (Input.GetKeyDown(KeyCode.P))
@@ -103,6 +110,7 @@ public class PlayerInputController : MonoBehaviour {
 		{
 			Debug.LogWarning("Enter was pressed. Pepper have been throwd");
 			m_IsPepperused = true;
+			m_SpawnPeper.SpawnPepper ();
 		}
 	}
 }
