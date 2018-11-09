@@ -96,7 +96,7 @@ public class BurgerSlice : MonoBehaviour {
 				//m_originPositon = transform.position;
 				m_IsMoving = false;
 
-				//m_Index = Mathf.Min(++m_Index, m_TargetSpots.Count-1) ;
+				m_Index = Mathf.Min(++m_Index, m_TargetSpots.Count-1) ;
 				//m_Index = m_Index+2 ;
 				foreach (BurgerBit elements in m_BurgerSlice) 
 				{   //Retset
@@ -118,10 +118,10 @@ public class BurgerSlice : MonoBehaviour {
 			 m_Target = m_TargetSpots[m_Index].transform.position;
 			m_IsAtPlate = Other.GetComponent<BurgerSlice>().IsAtPlate;
 		}
-		if (Other.tag == "Enemy"&& CheckAllBurgerBitAreTrue()) 
+		/*if (Other.tag == "Enemy"&& CheckAllBurgerBitAreTrue()) 
 		{ 
 			Debug.Log (" The BurgerSlices touch the Enemy before falling ");
-		}
+		}*/
 		if (Other.tag == "Plate") 
 		{
 			m_IsAtPlate = true;

@@ -35,6 +35,18 @@ public class GameHUDController : MonoBehaviour {
 	}
 
 
+	public int GetNumofPeper
+	{
+		get{return m_NumOfPepper;}	
+	}
+	public int GetNumoflives
+	{
+		get{return m_NumOflives;}	
+	}
+	public int GetNumOfOneCup
+	{
+		get{return m_NumOfOneCup;}	
+	}
 	public void IncreaseScore()
 	{
 		m_NumOfOneCup += 50;	

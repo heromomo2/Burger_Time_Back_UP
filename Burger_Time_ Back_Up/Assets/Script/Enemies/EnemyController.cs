@@ -16,7 +16,10 @@ public class EnemyController : MonoBehaviour {
 	private bool m_IsEnemyMovingRight = false;
 	[SerializeField]
 	private Vector3 m_TargetPosition;
-	[SerializeField] private float m_speed;
+	[SerializeField] 
+	private float m_speed;
+	[SerializeField]
+	private float m_AmountTimeStun; 
 	// Use this for initialization
 	void Start ()
 	{
@@ -27,6 +30,13 @@ public class EnemyController : MonoBehaviour {
 	void Update () 
 	{
 		MoveEnemy ();
+		/*If(m_IsTouchPepper)
+		 * {
+		 * m_IsEnemyMoving = false;
+		 * StartCoroutine(EnemyisStunned())
+		 * }
+		 
+		*/
 	}
 
 
@@ -67,5 +77,11 @@ public class EnemyController : MonoBehaviour {
 		}
 	}
 
+	/*IEnumerator Example()
+	{
+		yield return new WaitForSeconds(m_AmountTimeStun);
+		m_IsTouchPepper reset
+
+	}*/
 
 }

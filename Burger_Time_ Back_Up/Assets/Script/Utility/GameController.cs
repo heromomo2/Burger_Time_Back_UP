@@ -3,19 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
-
+	[SerializeField]
+	private GameHUDController m_GameHudController;
+	[SerializeField]
+	private List<EnemySpawner> m_EnemySpawners;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update () 
+	{
 
-	private void SetUpInput()
+	}
+		
+
+
+	/*private void SetUpInput()
 	{
 		if(!PlayerInput.IsInstanceNull)
 		{
@@ -67,7 +74,7 @@ public class GameController : MonoBehaviour {
 	{
 		Debug.Log ("HitPauseKey was pressed");
 		//m_MeunController
-	}
+	}*/
 
 
 

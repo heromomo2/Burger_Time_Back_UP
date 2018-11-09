@@ -910,7 +910,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '1cup: 0'
 --- !u!222 &146282889
@@ -2453,6 +2453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MenuController: {fileID: 1549893521}
+  m_GameHudController: {fileID: 2028736049}
   m_SpawnPeper: {fileID: 407545342}
   speed: 1.5
 --- !u!114 &407545339
@@ -2959,6 +2960,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c191508f8a2c4d7294bf8ee5c337761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GameHudController: {fileID: 0}
+  m_EnemySpawners: []
 --- !u!4 &475766151
 Transform:
   m_ObjectHideFlags: 0
@@ -3581,7 +3584,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Pepper:'
 --- !u!222 &585581330
@@ -4722,7 +4725,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4401307334456716, guid: 4514b48d698354c9cac7ddb33817164b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.41
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 4401307334456716, guid: 4514b48d698354c9cac7ddb33817164b, type: 2}
       propertyPath: m_LocalPosition.y
@@ -8083,7 +8086,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4955246234367586, guid: 2724a91ad80f24825942ba59e41d76c5, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.37
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 4955246234367586, guid: 2724a91ad80f24825942ba59e41d76c5, type: 2}
       propertyPath: m_LocalPosition.y
@@ -9476,7 +9479,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1653492172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.75, y: 1.72, z: 0}
+  m_LocalPosition: {x: -2.75, y: -2.82, z: 0}
   m_LocalScale: {x: 2.742644, y: 3.4271348, z: 2.5004172}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9511,6 +9514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ebbd22a27c74d4a9dedc757fcbd49d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GameHudController: {fileID: 2028736049}
 --- !u!1 &1671423431
 GameObject:
   m_ObjectHideFlags: 0

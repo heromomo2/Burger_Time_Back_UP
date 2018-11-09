@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class PlayerInputController : MonoBehaviour {
 	#region   Variables
-	[SerializeField] private MenuController m_MenuController;
-	[SerializeField] private SpawnPeper m_SpawnPeper;
+	[SerializeField]
+	private MenuController m_MenuController;
+	[SerializeField]
+	 private GameHUDController m_GameHudController;
+	[SerializeField] 
+	private SpawnPeper m_SpawnPeper;
 	private bool  m_IsPepperused = false; 
 	private bool  m_IsOnLadder = false;
 	private bool  m_IsOnExistPoint = false; 
@@ -108,9 +112,13 @@ public class PlayerInputController : MonoBehaviour {
 
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
-			Debug.LogWarning("Enter was pressed. Pepper have been throwd");
-			m_IsPepperused = true;
-			m_SpawnPeper.SpawnPepper ();
+			if (m_GameHudController.GetNumofPeper > 0)
+			{
+				Debug.LogWarning("Enter was pressed. Pepper have been throwd");
+				m_IsPepperused = true;
+				m_SpawnPeper.SpawnPepper ();
+				m_GameHudController.DecreasePeppercount ();
+			}
 		}
 	}
 }

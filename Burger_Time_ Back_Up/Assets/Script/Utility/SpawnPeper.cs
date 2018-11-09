@@ -10,7 +10,7 @@ public class SpawnPeper : MonoBehaviour {
 //	private List<Vector3> m_Transform;
 	private bool m_FaceUp= false;
 	private bool m_FaceDown= false;
-	private bool m_FaceRight= false;
+	private bool m_FaceRight= true;
 	private bool m_FaceLeft= false;
 
 	public void faceup()

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour {
 
+	[SerializeField]
+	private GameHUDController m_GameHudController;
 	private bool m_IsTouchPepper = false;
+	///private bool m_IsEnem;
 	private bool m_IsTouchBurgerSlice = false;
 	#region public fuctions
 	public bool GetTouchPepper
@@ -34,14 +37,15 @@ public class EnemyCollision : MonoBehaviour {
 	{
 	}
 
-	void OnTriggerStay2D(Collider2D Other)
+	void OnTriggerEnter2D(Collider2D Other)
 	{
 		if(Other.tag == "BurgerPart")
 		{
 			if (Other.GetComponent<BurgerSlice>().IsMoving == true)
 			{
 			m_IsTouchBurgerSlice = true;
-			//Debug.Log ("Enemy is touch burger slice");
+			Debug.Log ("Enemy is touch burger slice");
+				m_GameHudController.IncreaseScore();
 			}
 		}
 		if(Other.tag == "Pepper")
