@@ -18,6 +18,7 @@ public class BurgerSlice : MonoBehaviour {
 	private  bool m_IsEmemyOnBurger = false;
 	[SerializeField]
 	private  bool m_IsAtPlate = false;
+	private GameObject m_Enemies = null;
 
 	public Vector3 OriginPositon
 	{
@@ -89,21 +90,27 @@ public class BurgerSlice : MonoBehaviour {
 
 		if (m_IsMoving)
 		{ //m_IsEmemyOnBurger = false;
+			if(m_Enemies != null && m_Enemies.transform.parent != this.transform)
+			{
+				m_Enemies.transform.parent = this.transform;
+			}
 			Debug.Log("is being called");
-			if(transform.position == m_Target)
-			{/* If we are at our target position then set M_IsMoving to false.
+			if (transform.position == m_Target) {/* If we are at our target position then set M_IsMoving to false.
               *Reset all the bits m_IsStepped to false and reverse the PushBitdown()function.*/
 				//m_originPositon = transform.position;
-				m_IsMoving = false;
+				m_Index = Mathf.Min (++m_Index, m_TargetSpots.Count - 1);
 
-				m_Index = Mathf.Min(++m_Index, m_TargetSpots.Count-1) ;
-				//m_Index = m_Index+2 ;
-				foreach (BurgerBit elements in m_BurgerSlice) 
-				{   //Retset
-					elements.Reset ();
-					//elements.transform.localPosition = elements.transform.localPosition + (Vector3.down * elements.DownFactor);
+				m_IsMoving = false;
+				if (!m_IsEmemyOnBurger) 
+				{
+					//m_Index = m_Index+2 ;
+					foreach (BurgerBit elements in m_BurgerSlice) 
+					{   //Retset
+						elements.Reset ();
+						//elements.transform.localPosition = elements.transform.localPosition + (Vector3.down * elements.DownFactor);
+					}
 				}
-			} 
+			}
 		}
 	}
 	#endregion
@@ -115,13 +122,16 @@ public class BurgerSlice : MonoBehaviour {
 		  * set our target to the same position as other slice origin-position.*/
 			Debug.Log (" The BurgerSlices are touch ");
 		     // 	m_Target = Other.GetComponent<BurgerSlice>().OriginPositon;
-			 m_Target = m_TargetSpots[m_Index].transform.position;
+		//	 m_Target = m_TargetSpots[m_Index].transform.position;
 			m_IsAtPlate = Other.GetComponent<BurgerSlice>().IsAtPlate;
 		}
-		/*if (Other.tag == "Enemy"&& CheckAllBurgerBitAreTrue()) 
+		if (Other.tag == "Enemy") 
 		{ 
-			Debug.Log (" The BurgerSlices touch the Enemy before falling ");
-		}*/
+		//	Debug.Log (" The BurgerSlices touch the Enemy before falling ");
+			m_IsEmemyOnBurger = true;
+			m_Enemies = Other.gameObject;
+
+		}
 		if (Other.tag == "Plate") 
 		{
 			m_IsAtPlate = true;
@@ -129,19 +139,13 @@ public class BurgerSlice : MonoBehaviour {
 			Debug.Log (" The BurgerSlices are touch are touching the plate.");
 		}
 	}
-	void OnTriggerStay2D(Collider2D Other)
+	void OnTriggerExit2D(Collider2D Other)
 	{
-		if (Other.tag == "Enemy"&& CheckAllBurgerBitAreTrue()) 
-		{
-			//m_IsEmemyOnBurger = true;
-			//if (m_IsEmemyOnBurger) 
-			//{
+		if (Other.tag == "Enemy") 
+		{ 
 			//	Debug.Log (" The BurgerSlices touch the Enemy before falling ");
-			//m_Index = m_Index+2 ;
-			//}
+			m_IsEmemyOnBurger = false;
 		}
 	}
-
-
-
+		
 }
