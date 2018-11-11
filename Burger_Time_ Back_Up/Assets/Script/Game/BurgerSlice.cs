@@ -12,7 +12,6 @@ public class BurgerSlice : MonoBehaviour {
 	private  float m_step;
 	[SerializeField]
 	private  int m_Index= 1;
-	private  Vector3 m_originPositon; 
 	private  Vector3 m_Target;
 	private  bool m_IsMoving = false;
 	private  bool m_IsEmemyOnBurger = false;
@@ -20,10 +19,6 @@ public class BurgerSlice : MonoBehaviour {
 	private  bool m_IsAtPlate = false;
 	private GameObject m_Enemies = null;
 
-	public Vector3 OriginPositon
-	{
-		get{return m_originPositon;}
-	}
 	public bool IsAtPlate
 	{
 		get{return m_IsAtPlate;}
@@ -35,8 +30,7 @@ public class BurgerSlice : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () 
-	{    /*Save the position for the next slice from the start */
-		m_originPositon = transform.position;
+	{   
 	}
 	
 	// Update is called once per frame
@@ -52,12 +46,8 @@ public class BurgerSlice : MonoBehaviour {
 					m_IsMoving = true;
 					/* Target position will be a constant downward
 				 * until we get the position of the next burger slice. */
-					//m_Target = transform.position + Vector3.down;
-					//m_Target = m_TargetSpot.transform.position;
 
 					m_Target =m_TargetSpots[m_Index].transform.position;
-						
-					//	transform.localPosition = transform.localPosition + (Vector3.up * m_DownFactor);
 				}
 				/* Call the MoveBurgerSlice fuction to move all bits down */
 				MoveBurgerSlice ();
@@ -71,7 +61,7 @@ public class BurgerSlice : MonoBehaviour {
 	  *If all bits have been stepped on then return true if one bit hasn't been stepped on then return false.*/
 		foreach (BurgerBit elements in m_BurgerSlice )
 		{
-		  /* To Do: Check all the bits have been step on. */ 
+		  /* TODO: Check all the bits have been step on. */ 
 
 			if (!elements.IsStepped) 
 			{
@@ -89,7 +79,7 @@ public class BurgerSlice : MonoBehaviour {
 		transform.position = Vector3.MoveTowards (transform.position, m_Target, m_step); ///  move the target
 
 		if (m_IsMoving)
-		{ //m_IsEmemyOnBurger = false;
+		{
 			if(m_Enemies != null && m_Enemies.transform.parent != this.transform)
 			{
 				m_Enemies.transform.parent = this.transform;
@@ -103,11 +93,9 @@ public class BurgerSlice : MonoBehaviour {
 				m_IsMoving = false;
 				if (!m_IsEmemyOnBurger) 
 				{
-					//m_Index = m_Index+2 ;
 					foreach (BurgerBit elements in m_BurgerSlice) 
 					{   //Retset
 						elements.Reset ();
-						//elements.transform.localPosition = elements.transform.localPosition + (Vector3.down * elements.DownFactor);
 					}
 				}
 			}
@@ -121,8 +109,6 @@ public class BurgerSlice : MonoBehaviour {
 		{/* If two BurgerSlices are touching and all bits have been stepped on then 
 		  * set our target to the same position as other slice origin-position.*/
 			Debug.Log (" The BurgerSlices are touch ");
-		     // 	m_Target = Other.GetComponent<BurgerSlice>().OriginPositon;
-		//	 m_Target = m_TargetSpots[m_Index].transform.position;
 			m_IsAtPlate = Other.GetComponent<BurgerSlice>().IsAtPlate;
 		}
 		if (Other.tag == "Enemy") 
@@ -130,12 +116,10 @@ public class BurgerSlice : MonoBehaviour {
 		//	Debug.Log (" The BurgerSlices touch the Enemy before falling ");
 			m_IsEmemyOnBurger = true;
 			m_Enemies = Other.gameObject;
-
 		}
 		if (Other.tag == "Plate") 
 		{
 			m_IsAtPlate = true;
-			//m_Index = m_TargetSpots.Count - 1;
 			Debug.Log (" The BurgerSlices are touch are touching the plate.");
 		}
 	}
