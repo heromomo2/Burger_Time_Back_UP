@@ -9781,7 +9781,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1653492172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.095, y: 1.68, z: 0}
+  m_LocalPosition: {x: -0.9, y: 2.94, z: 0}
   m_LocalScale: {x: 2.742644, y: 3.4271348, z: 2.5004172}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9806,6 +9806,7 @@ MonoBehaviour:
   m_TargetPosition: {x: 0, y: 0, z: 0}
   m_speed: 0.5
   m_AmountTimeStun: 0
+  m_targetnode: {fileID: 0}
 --- !u!114 &1653492178
 MonoBehaviour:
   m_ObjectHideFlags: 0

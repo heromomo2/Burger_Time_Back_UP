@@ -85,14 +85,14 @@ public class BurgerSlice : MonoBehaviour {
 				m_Enemies.transform.parent = this.transform;
 			}
 			Debug.Log("is being called");
-			if (transform.position == m_Target) {/* If we are at our target position then set M_IsMoving to false.
+			if (transform.position == m_Target) 
+			{/* If we are at our target position then set M_IsMoving to false.
               *Reset all the bits m_IsStepped to false and reverse the PushBitdown()function.*/
-				//m_originPositon = transform.position;
 				m_Index = Mathf.Min (++m_Index, m_TargetSpots.Count - 1);
 
 				m_IsMoving = false;
 				if (!m_IsEmemyOnBurger) 
-				{
+				{/*If a ememy  on a burgerslice keep failing  */
 					foreach (BurgerBit elements in m_BurgerSlice) 
 					{   //Retset
 						elements.Reset ();
@@ -114,8 +114,15 @@ public class BurgerSlice : MonoBehaviour {
 		if (Other.tag == "Enemy") 
 		{ 
 		//	Debug.Log (" The BurgerSlices touch the Enemy before falling ");
+			/* If enemy touch BurgerSlice they will stick up to it.
+			*/
+
+			// Top of a burger. Enemy on a slice whit about to fail.
 			m_IsEmemyOnBurger = true;
 			m_Enemies = Other.gameObject;
+
+
+			// Bottom of a burger. about to be squish
 		}
 		if (Other.tag == "Plate") 
 		{

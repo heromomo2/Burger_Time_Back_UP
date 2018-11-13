@@ -20,6 +20,9 @@ public class EnemyController : MonoBehaviour {
 	private float m_speed;
 	[SerializeField]
 	private float m_AmountTimeStun; 
+
+	[SerializeField]
+	private Node m_targetnode;
 	// Use this for initialization
 	void Start ()
 	{
@@ -39,6 +42,12 @@ public class EnemyController : MonoBehaviour {
 		*/
 	}
 
+	private void EnemyAI()
+	{
+		/*TODO: find if the target node is blown you or you above and move in that direction. 
+        *If the target node on the same platform as you move to the side it's on.
+        */ 
+	}
 
 
 	// TODO: Move the Enemy  up and down or right or down.
