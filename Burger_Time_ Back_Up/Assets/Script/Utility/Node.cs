@@ -12,5 +12,8 @@ public class Node : MonoBehaviour {
 	{
 		get{return m_LocalNode;}
 	}
-
+	public int GetLocalNodeCount
+	{
+		get{return m_LocalNode.Count;}
+	}
 }
