@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1529340110650632
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,13 +422,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d85b47117b8ff4be785eaa26de224387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TargetSpot: {fileID: 0}
+  m_TargetSpots: []
   m_BurgerSlice:
   - {fileID: 114066985477867692}
   - {fileID: 114403213665260852}
   - {fileID: 114364726658547206}
   - {fileID: 114314535560260608}
   m_Speed: 2.5
+  m_Index: 1
   m_IsAtPlate: 0
 --- !u!114 &114314535560260608
 MonoBehaviour:
