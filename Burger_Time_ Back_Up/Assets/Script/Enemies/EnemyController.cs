@@ -6,14 +6,14 @@ public class EnemyController : MonoBehaviour {
 
 	[SerializeField]
 	private bool m_IsEnemyMoving = false;
-	[SerializeField]
-	private bool m_IsEnemyMovingOnLadder = false;
-	[SerializeField]
-	private bool m_IsEnemyMovingSide = false;
-	[SerializeField]
-	private bool m_IsEnemyMovingUP = false;
-	[SerializeField]
-	private bool m_IsEnemyMovingRight = false;
+//	[SerializeField]
+//	private bool m_IsEnemyMovingOnLadder = false;
+//	[SerializeField]
+//	private bool m_IsEnemyMovingSide = false;
+//	[SerializeField]
+//	private bool m_IsEnemyMovingUP = false;
+//	[SerializeField]
+//	private bool m_IsEnemyMovingRight = false;
 	[SerializeField]
 	private Transform m_PlayerPosition;
 	[SerializeField] 
@@ -25,8 +25,17 @@ public class EnemyController : MonoBehaviour {
 	[SerializeField]
 	private Node m_LastNode = null;
 	[SerializeField]
-	private bool m_isCrush;
+	private bool m_isCrush = false;
+
+	[SerializeField]
+	private EnemyCollision m_EnemyCollison;
 	// Use this for initialization
+
+
+	public void CrushTheEnemy()
+	{
+		m_isCrush =true;
+	}
 	void Start ()
 	{
 		
@@ -35,10 +44,10 @@ public class EnemyController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		Debug.Log("Time.delta time :"+ Time.deltaTime);
+		//Debug.Log("Time.delta time :"+ Time.deltaTime);
 		//MoveEnemy ();
 
-		EnemyAI ();
+//		EnemyAI ();
 		/*If(m_IsTouchPepper)
 		 * {
 		 * m_IsEnemyMoving = false;
@@ -46,6 +55,8 @@ public class EnemyController : MonoBehaviour {
 		 * }
 		 
 		*/
+
+		EnemyAI ();
 	}
 
 	private void EnemyAI()
@@ -53,65 +64,28 @@ public class EnemyController : MonoBehaviour {
 		/*TODO: find if the target node is blown you or you above and move in that direction. 
         *If the target node on the same platform as you move to the side it's on.
         */ 
-		//  Debug.Log ("Enemy's position: " + transform.position);
-		//	Debug.Log ("TargetNode's position: " + m_TargetNode.transform.position);
-
-	  	float m_distanceBeteen = Vector3.Distance(m_TargetNode.transform.position, transform.position);
-		if (transform.position != m_TargetNode.transform.position)
+		if (m_isCrush) 
 		{
-			m_IsEnemyMoving = true;
-
-			if (m_TargetNode.transform.position.y > transform.position.y) 
-			{ 
-				// go up
-				m_IsEnemyMovingOnLadder = true; 
-				m_IsEnemyMovingUP = true;
-				m_IsEnemyMovingSide = false;
-				m_IsEnemyMovingRight = false;
-				Debug.Log ("enemy should going up" );
-			}
-
-			if (m_TargetNode.transform.position.y < transform.position.y) 
-			{
-				// go down
-				m_IsEnemyMovingOnLadder = true; 
-				m_IsEnemyMovingUP = false;
-				m_IsEnemyMovingSide = false;
-				m_IsEnemyMovingRight = false;
-				Debug.Log ("enemy should going down" );
-			}
-
-			if (m_TargetNode.transform.position.x < transform.position.x)
-			{
-				// go left
-				m_IsEnemyMovingOnLadder = false; 
-				m_IsEnemyMovingUP = false;
-				m_IsEnemyMovingSide = true;
-				m_IsEnemyMovingRight = false;
-			}
-
-			if (m_TargetNode.transform.position.x >transform.position.x) 
-			{
-				// go right
-				m_IsEnemyMovingOnLadder = false; 
-				m_IsEnemyMovingUP = false;
-				m_IsEnemyMovingSide = true;
-				m_IsEnemyMovingRight = true;
-			}
-
-			MoveEnemy ();
-		} 
-
-		if(transform.position == m_TargetNode.transform.position) //|| m_distanceBeteen < 0.05)
+			DestroyGameObject ();
+		}
+		if (m_EnemyCollison.GetTouchPepper) 
 		{
-			m_IsEnemyMoving = false; // stop the enemy
-			//Debug.Log ("Atta");
-			//Debug.Log ("Enemy's position: " + transform.position);
-			//Debug.Log ("TargetNode's position: " + m_TargetNode.transform.position);
-			PickNewNode ();
-			//m_TargetNode = m_TargetNode.GetLocalNode [Random.Range (0, m_TargetNode.GetLocalNodeCount)];
-			m_IsEnemyMovingOnLadder = false; 
-			m_IsEnemyMovingSide = false;
+			m_IsEnemyMoving = false;
+			StartCoroutine ( Stun());
+		}
+			
+		if (m_IsEnemyMoving) 
+		{
+			// move to the node
+			if (transform.position != m_TargetNode.transform.position) 
+			{
+				MoveEnemy ();
+			}
+			else if (transform.position == m_TargetNode.transform.position)
+			{
+			// when you are at the node.
+				PickNewNode ();
+			}
 		}
 	}
 
@@ -122,16 +96,6 @@ public class EnemyController : MonoBehaviour {
 		Node tempNode = null;
 		foreach (Node node in m_TargetNode.GetLocalNode) 
 		{
-			/*  araay 1|6|7|8|3
-			 * int lownum = array[0];
-			 * for (int i = 1; i > arrray.lenght ; i++)
-			 * {  
-			 *    if( array[i] < lownum )
-			 *     {
-			 *      lownum = array[i];
-			 *     }
-			 * }
-			*/
 			if (node == m_LastNode) // ship element
 			{
 				continue;
@@ -148,7 +112,6 @@ public class EnemyController : MonoBehaviour {
 					tempNode = node;
 				}
 			}
-			//= Vector3.Distance (m_PlayerPosition ,);
 		}
 		m_LastNode = m_TargetNode;
 		m_TargetNode = tempNode;
@@ -159,44 +122,18 @@ public class EnemyController : MonoBehaviour {
 
 	private void MoveEnemy()
 	{   
-		if (m_IsEnemyMoving) 
-		{
-			transform.position = Vector3.MoveTowards (transform.position, m_TargetNode.transform.position, m_speed);
-//			if (m_IsEnemyMovingSide) 
-//			{
-//				if (m_IsEnemyMovingRight) 
-//				{
-//					// move right
-//					transform.Translate (Vector3.right * m_speed * Time.deltaTime);
-//				} 
-//				else
-//				{
-//					// move left
-//					transform.Translate (Vector3.left * m_speed * Time.deltaTime);
-//				}
-//			}
-//
-//			if (m_IsEnemyMovingOnLadder)
-//			{
-//				if (m_IsEnemyMovingUP) 
-//				{
-//					// move up
-//					transform.Translate (Vector3.up * m_speed * Time.deltaTime);
-//				} 
-//				else 
-//				{
-//					// move down
-//					transform.Translate (Vector3.down * m_speed * Time.deltaTime);
-//				}
-//			}
-		}
+	 	transform.position = Vector3.MoveTowards (transform.position, m_TargetNode.transform.position, m_speed);		
 	}
 
-	/*IEnumerator Example()
+	IEnumerator Stun()
 	{
 		yield return new WaitForSeconds(m_AmountTimeStun);
-		m_IsTouchPepper reset
-
-	}*/
-
+		//reset
+		m_EnemyCollison.ResetTouchPepper(); 
+		m_IsEnemyMoving= true;
+	}
+	void DestroyGameObject()
+	{
+		Destroy (gameObject);
+	}
 }

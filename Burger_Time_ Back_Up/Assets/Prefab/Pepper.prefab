@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4910794162284372}
   - component: {fileID: 212736235475921992}
   - component: {fileID: 61556525682111056}
+  - component: {fileID: 114215916077275338}
   m_Layer: 0
   m_Name: Pepper
-  m_TagString: Untagged
+  m_TagString: Pepper
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,6 +67,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.54, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &114215916077275338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013399101186180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc87d7678aa604da1aa3ac36f4e62adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DespawnTime: 0.5
 --- !u!212 &212736235475921992
 SpriteRenderer:
   m_ObjectHideFlags: 1

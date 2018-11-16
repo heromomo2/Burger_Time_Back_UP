@@ -2904,7 +2904,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 407545335}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.06, y: 1.17, z: 0}
+  m_LocalPosition: {x: -4.06, y: 1.82, z: 0}
   m_LocalScale: {x: 3.267313, y: 3.1039467, z: 3.3946104}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11863,7 +11863,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1653492172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.91, y: -2.883374, z: 0}
+  m_LocalPosition: {x: -3.02, y: 0.34, z: 0}
   m_LocalScale: {x: 2.742644, y: 3.4271348, z: 2.5004172}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11880,17 +11880,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c7e4bebe89d495d9a24e53a9fa6221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IsEnemyMoving: 1
-  m_IsEnemyMovingOnLadder: 0
-  m_IsEnemyMovingSide: 0
-  m_IsEnemyMovingUP: 0
-  m_IsEnemyMovingRight: 0
+  m_IsEnemyMoving: 0
   m_PlayerPosition: {fileID: 407545337}
-  m_speed: 0.05
-  m_AmountTimeStun: 0
+  m_speed: 0.03
+  m_AmountTimeStun: 5
   m_TargetNode: {fileID: 961296590}
   m_LastNode: {fileID: 0}
   m_isCrush: 0
+  m_EnemyCollison: {fileID: 1653492178}
 --- !u!114 &1653492178
 MonoBehaviour:
   m_ObjectHideFlags: 0

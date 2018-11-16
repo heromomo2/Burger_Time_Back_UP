@@ -116,10 +116,11 @@ public class BurgerSlice : MonoBehaviour {
 		//	Debug.Log (" The BurgerSlices touch the Enemy before falling ");
 			/* If enemy touch BurgerSlice they will stick up to it.
 			*/
-
+			//Other.GetComponent<EnemyController>().CrushTheEnemy();
 			// Top of a burger. Enemy on a slice whit about to fail.
 			m_IsEmemyOnBurger = true;
 			m_Enemies = Other.gameObject;
+
 
 
 			// Bottom of a burger. about to be squish
