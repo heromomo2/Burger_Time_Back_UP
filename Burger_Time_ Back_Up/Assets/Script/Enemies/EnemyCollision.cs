@@ -9,6 +9,7 @@ public class EnemyCollision : MonoBehaviour {
 	private bool m_IsTouchPepper = false;
 	///private bool m_IsEnem;
 	private bool m_IsTouchBurgerSlice = false;
+	private bool m_IsTopOfBurgerSlice = false;
 	#region public fuctions
 	public bool GetTouchPepper
 	{
@@ -41,10 +42,25 @@ public class EnemyCollision : MonoBehaviour {
 	{
 		if(Other.tag == "BurgerPart")
 		{
+			//Debug.Log ("burgerslice's position.Y:  "+Other.transform.position.y);
+			//Debug.Log ("Enemy's position.Y:  "+ transform.position.y);
+
 			if (Other.GetComponent<BurgerSlice>().IsMoving == true)
 			{
-			m_IsTouchBurgerSlice = true;
+			  m_IsTouchBurgerSlice = true;
+
+
 			Debug.Log ("Enemy is touch burger slice");
+
+//				if (transform.position.y > Other.transform.position.y ) 
+//				{
+//					Debug.Log ("Enemy Should crush under  a Burgerslice");	
+//				}
+//				else
+//				{
+//					Debug.Log ("Enemy Should be riding a Burgerslice");	
+//				}
+
 				m_GameHudController.IncreaseScore();
 			}
 		}

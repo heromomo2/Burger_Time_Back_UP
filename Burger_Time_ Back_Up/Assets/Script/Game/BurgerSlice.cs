@@ -18,7 +18,10 @@ public class BurgerSlice : MonoBehaviour {
 	[SerializeField]
 	private  bool m_IsAtPlate = false;
 	private GameObject m_Enemies = null;
+	private int temp = 0;
 
+
+	
 	public bool IsAtPlate
 	{
 		get{return m_IsAtPlate;}
@@ -89,6 +92,19 @@ public class BurgerSlice : MonoBehaviour {
 			{/* If we are at our target position then set M_IsMoving to false.
               *Reset all the bits m_IsStepped to false and reverse the PushBitdown()function.*/
 				m_Index = Mathf.Min (++m_Index, m_TargetSpots.Count - 1);
+				//m_IsMoving = false;
+				if (m_IsEmemyOnBurger) 
+				{//* double drop
+					
+					
+
+					temp = ++temp;
+					if (temp > 1) 
+					{
+						m_IsEmemyOnBurger = false;
+						temp = 0;
+					}
+				}
 
 				m_IsMoving = false;
 				if (!m_IsEmemyOnBurger) 
@@ -119,8 +135,8 @@ public class BurgerSlice : MonoBehaviour {
 			//Other.GetComponent<EnemyController>().CrushTheEnemy();
 			// Top of a burger. Enemy on a slice whit about to fail.
 			m_IsEmemyOnBurger = true;
-			m_Enemies = Other.gameObject;
-
+			//m_Enemies = Other.gameObject;
+			Debug.Log("beep beep enemy");
 
 
 			// Bottom of a burger. about to be squish
@@ -136,7 +152,7 @@ public class BurgerSlice : MonoBehaviour {
 		if (Other.tag == "Enemy") 
 		{ 
 			//	Debug.Log (" The BurgerSlices touch the Enemy before falling ");
-			m_IsEmemyOnBurger = false;
+			//m_IsEmemyOnBurger = false;
 		}
 	}
 		
