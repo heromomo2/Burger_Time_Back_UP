@@ -1,26 +1,74 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 	[SerializeField]
 	private GameHUDController m_GameHudController;
 	[SerializeField]
 	private List<EnemySpawner> m_EnemySpawners;
+	[SerializeField]
+	private List<EnemyController> m_Enemies = null;
+	[SerializeField]
+	private Transform  m_PlayerStartPoint;
+	[SerializeField]
+	private PlayerInputController m_Player;
+	[SerializeField]
+	private float m_EnemySpawnersTimer;
+	private bool m_StopEnemySpawners;
+	private int m_EnemyLimit = 3;
+	private GameObject m_tempEnemy;
 
+	/*public void AddEnemyToList (EnemyController  TempEnemy )
+	{
+		m_Enemies.Add (TempEnemy);
+	}
+	public void RemoveEnemyToList (EnemyController TempEnemy )
+	{
+		m_Enemies.Remove(TempEnemy);
+	}*/
+		
 	// Use this for initialization
 	void Start () 
 	{
-		
+		StartCoroutine (SpawnUpdate());
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		//Debug.Log (""m_EnemySpawners.Count);
 
+		if (Input.GetKey (KeyCode.Space)) 
+		{
+			DespawnAllEnemy ();
+		}
+		if(m_Enemies.Count >= m_EnemyLimit)
+		{
+			m_StopEnemySpawners = true;
+		}
+		else if (!m_StopEnemySpawners) 
+		{
+			StartCoroutine (SpawnUpdate());
+			m_tempEnemy = GameObject.FindGameObjectWithTag("Enemy");
+			m_Enemies.Add (m_tempEnemy.GetComponent<EnemyController>());
+		}
 	}
 		
 
+	IEnumerator SpawnUpdate()
+	{
+		yield return new WaitForSeconds(m_EnemySpawnersTimer);
+		m_EnemySpawners [Random.Range (0, m_EnemySpawners.Count)].SpawnEnemy ();
+	}
+	private void DespawnAllEnemy()
+	{
+		foreach(EnemyController enemy in m_Enemies)
+		{
+			//enemy.DestroyGameObject ();
+		}
+	}
 
 	/*private void SetUpInput()
 	{

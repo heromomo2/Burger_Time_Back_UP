@@ -8,7 +8,8 @@ public class EnemySpawner : MonoBehaviour {
 	private GameObject m_EnemyPrefab = null;
 	[SerializeField]
 	private Transform m_Target = null;
-
+	[SerializeField]
+	private GameController  m_GameController;
 	[SerializeField]
 	 private Node m_StartNode = null;
 
@@ -30,10 +31,10 @@ public class EnemySpawner : MonoBehaviour {
 			// TO DO: remove any enemies have dea
 			m_Enemies.Remove (enemy);
 		}*/
-		if (Input.GetKey (KeyCode.Space)) 
-		{
-			SpawnEnemy ();
-		}
+//		if (Input.GetKey (KeyCode.Space)) 
+//		{
+//			SpawnEnemy ();
+//		}
 	}
 	public void SpawnEnemy()
 	{
@@ -44,7 +45,7 @@ public class EnemySpawner : MonoBehaviour {
 		//temp = gameObject.GetComponent<EnemyController>.
 		EnemyController TempEnemy = temp.GetComponent<EnemyController>();
 		TempEnemy.StartNode (m_StartNode, m_Target );
-
+		//m_GameController.AddEnemyToList (TempEnemy);
 
 		Debug.Log(" SpawnEnemy is being calling");
 	}

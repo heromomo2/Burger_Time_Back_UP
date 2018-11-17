@@ -138,7 +138,7 @@ public class EnemyController : MonoBehaviour {
 		m_EnemyCollison.ResetTouchPepper(); 
 		m_IsEnemyMoving= true;
 	}
-	void DestroyGameObject()
+	public void DestroyGameObject()
 	{
 		Destroy (gameObject);
 	}

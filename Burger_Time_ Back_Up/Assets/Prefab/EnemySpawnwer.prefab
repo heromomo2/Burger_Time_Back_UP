@@ -55,6 +55,7 @@ MonoBehaviour:
   m_EnemyPrefab: {fileID: 1195552166525904, guid: dd2a4f87bb8b847a9a07cdc91f2d2276,
     type: 2}
   m_Target: {fileID: 0}
+  m_GameController: {fileID: 0}
   m_StartNode: {fileID: 0}
 --- !u!212 &212551349140974348
 SpriteRenderer:
@@ -62,7 +63,7 @@ SpriteRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1980425640109334}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
