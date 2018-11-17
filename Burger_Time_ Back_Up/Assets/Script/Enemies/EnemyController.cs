@@ -36,6 +36,12 @@ public class EnemyController : MonoBehaviour {
 	{
 		m_isCrush =true;
 	}
+	public void StartNode(Node FirstNode , Transform PlayerPosition)
+	{
+		m_TargetNode = FirstNode;
+		m_PlayerPosition = PlayerPosition;
+
+	}
 	void Start ()
 	{
 		

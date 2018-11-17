@@ -9,12 +9,16 @@ public class EnemySpawner : MonoBehaviour {
 	[SerializeField]
 	private Transform m_Target = null;
 
-	private List<EnemyController> m_Enemies = new List<EnemyController>(); // help keep track of enemies
-	private List<EnemyController> m_EnemiesRemoveList = new List<EnemyController>();
+	[SerializeField]
+	 private Node m_StartNode = null;
+
+	//private List<EnemyController> m_Enemies = new List<EnemyController>(); // help keep track of enemies
+	//private List<EnemyController> m_EnemiesRemoveList = new List<EnemyController>();
 
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		
 	}
 	
@@ -26,17 +30,23 @@ public class EnemySpawner : MonoBehaviour {
 			// TO DO: remove any enemies have dea
 			m_Enemies.Remove (enemy);
 		}*/
-		
+		if (Input.GetKey (KeyCode.Space)) 
+		{
+			SpawnEnemy ();
+		}
 	}
 	public void SpawnEnemy()
 	{
-		/* TODO: .Spawns an Enemy and  add it the list.*/
-		/*GameObject temp = Instantiate<GameObject> (m_EnemyPrefab);
-		temp.transform.parent = this.transform;
-		temp.transform.localPosition = Vector3.zero;
-		m_Enemies.Add (note);
+		/*TODO: .Spawns an Enemy and  add it the list.*/
+		GameObject temp = Instantiate<GameObject> (m_EnemyPrefab);
+		temp.transform.position = this.transform.position;
+		//temp.transform.localPosition = Vector3.zero;
+		//temp = gameObject.GetComponent<EnemyController>.
+		EnemyController TempEnemy = temp.GetComponent<EnemyController>();
+		TempEnemy.StartNode (m_StartNode, m_Target );
 
-		Debug.Log(" SpawnEnemy is being calling");*/
+
+		Debug.Log(" SpawnEnemy is being calling");
 	}
 
 	public void CheckifEnemyIsdead()
