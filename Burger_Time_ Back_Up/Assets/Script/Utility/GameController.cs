@@ -17,8 +17,8 @@ public class GameController : MonoBehaviour {
 	[SerializeField]
 	private float m_EnemySpawnersTimer;
 	private bool m_StopEnemySpawners;
-	private int m_EnemyLimit = 3;
-	private GameObject m_tempEnemy;
+	private int m_EnemyLimit = 4;
+	private EnemyController m_tempEnemy;
 
 	/*public void AddEnemyToList (EnemyController  TempEnemy )
 	{
@@ -32,7 +32,6 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		StartCoroutine (SpawnUpdate());
 	}
 	
 	// Update is called once per frame
@@ -43,6 +42,7 @@ public class GameController : MonoBehaviour {
 		if (Input.GetKey (KeyCode.Space)) 
 		{
 			DespawnAllEnemy ();
+			Debug.Log (" despawn all enemy");
 		}
 		if(m_Enemies.Count >= m_EnemyLimit)
 		{
@@ -51,8 +51,8 @@ public class GameController : MonoBehaviour {
 		else if (!m_StopEnemySpawners) 
 		{
 			StartCoroutine (SpawnUpdate());
-			m_tempEnemy = GameObject.FindGameObjectWithTag("Enemy");
-			m_Enemies.Add (m_tempEnemy.GetComponent<EnemyController>());
+			m_tempEnemy = FindObjectOfType<EnemyController> ();
+			m_Enemies.Add (m_tempEnemy);
 		}
 	}
 		
@@ -66,7 +66,8 @@ public class GameController : MonoBehaviour {
 	{
 		foreach(EnemyController enemy in m_Enemies)
 		{
-			//enemy.DestroyGameObject ();
+			enemy.DestroyGameObject ();
+			Debug.Log (" begone enemy");
 		}
 	}
 
