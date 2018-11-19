@@ -18,7 +18,8 @@ public class GameController : MonoBehaviour {
 	private float m_EnemySpawnersTimer;
 	private bool m_StopEnemySpawners;
 	private int m_EnemyLimit = 4;
-	private EnemyController m_tempEnemy;
+	private EnemyController m_TempEnemy;
+	private Coroutine m_spawnCoroutine = null;
 
 	/*public void AddEnemyToList (EnemyController  TempEnemy )
 	{
@@ -30,37 +31,43 @@ public class GameController : MonoBehaviour {
 	}*/
 		
 	// Use this for initialization
+	void OnDestroy()
+	{
+		if (m_spawnCoroutine != null)
+		{
+			m_spawnCoroutine = null;
+		}
+	}
 	void Start () 
 	{
+		m_spawnCoroutine = StartCoroutine (SpawnUpdate());
 	}
-	
 	// Update is called once per frame
 	void Update () 
 	{
-		//Debug.Log (""m_EnemySpawners.Count);
+		
+//		if (Input.GetKey(KeyCode.K))
+//		{
+//			PlayerBackToStart ();
+//		}
 
 		if (Input.GetKey (KeyCode.Space)) 
 		{
 			DespawnAllEnemy ();
 			Debug.Log (" despawn all enemy");
 		}
-		if(m_Enemies.Count >= m_EnemyLimit)
-		{
-			m_StopEnemySpawners = true;
-		}
-		else if (!m_StopEnemySpawners) 
-		{
-			StartCoroutine (SpawnUpdate());
-			m_tempEnemy = FindObjectOfType<EnemyController> ();
-			m_Enemies.Add (m_tempEnemy);
-		}
+
 	}
 		
 
 	IEnumerator SpawnUpdate()
 	{
 		yield return new WaitForSeconds(m_EnemySpawnersTimer);
-		m_EnemySpawners [Random.Range (0, m_EnemySpawners.Count)].SpawnEnemy ();
+		if (m_Enemies.Count < m_EnemyLimit) 
+		{
+			m_Enemies.Add (m_EnemySpawners [Random.Range (0, m_EnemySpawners.Count)].SpawnEnemy ());
+		}
+		m_spawnCoroutine = StartCoroutine (SpawnUpdate());
 	}
 	private void DespawnAllEnemy()
 	{
@@ -125,6 +132,10 @@ public class GameController : MonoBehaviour {
 		//m_MeunController
 	}*/
 
-
+	 private void PlayerBackToStart()
+	{
+		m_Player.transform.position = m_PlayerStartPoint.position;
+		//m_Player.PlayerIsAlive;
+	}
 
 }

@@ -10,11 +10,12 @@ public class PlayerInputController : MonoBehaviour {
 	 private GameHUDController m_GameHudController;
 	[SerializeField] 
 	private SpawnPeper m_SpawnPeper;
-	private bool  m_IsPepperused = false; 
 	private bool  m_IsOnLadder = false;
 	private bool  m_IsOnExistPoint = false; 
 	private bool  m_IsOnTopPoint = false;
 	private bool  m_IsOnBottomPoint = false;
+	[SerializeField] 
+	private bool  m_IsPlayerDead = false;
 	[SerializeField] private float speed;
 	#endregion
 
@@ -35,6 +36,14 @@ public class PlayerInputController : MonoBehaviour {
 	{
 		set { m_IsOnBottomPoint  = value;}
 	}
+	public  void PlayerIsDead()
+	{
+		m_IsPlayerDead = true;
+	}
+	public  void PlayerIsAlive()
+	{
+		m_IsPlayerDead = false;
+	}
 	#endregion
 
 	// Use this for initialization
@@ -47,22 +56,14 @@ public class PlayerInputController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		GetInput2 ();
-	
+		if (!m_IsPlayerDead) 
+		{
+			GetInput2 ();
+		}
 	}
 	/* test pepper being pressed
 	*/
-	void OnGUI()
-	{
-		if (!m_IsPepperused)
-		{
-		GUI.Label(new Rect(10, 350, 100, 20), "Peper haven't be used");
-		}
-		else
-		{
-		GUI.Label(new Rect(10, 350, 100, 20), "Peper haven be used");
-		}
-	}
+
 	/* Player input is done here	*/
 
 	private void GetInput2()
@@ -115,7 +116,6 @@ public class PlayerInputController : MonoBehaviour {
 			if (m_GameHudController.GetNumofPeper > 0)
 			{
 				Debug.LogWarning("Enter was pressed. Pepper have been throwd");
-				m_IsPepperused = true;
 				m_SpawnPeper.SpawnPepper ();
 				m_GameHudController.DecreasePeppercount ();
 			}

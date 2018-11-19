@@ -95,9 +95,6 @@ public class BurgerSlice : MonoBehaviour {
 				//m_IsMoving = false;
 				if (m_IsEmemyOnBurger) 
 				{//* double drop
-					
-					
-
 					temp = ++temp;
 					if (temp > 1) 
 					{
@@ -149,10 +146,10 @@ public class BurgerSlice : MonoBehaviour {
 	}
 	void OnTriggerExit2D(Collider2D Other)
 	{
-		if (Other.tag == "Enemy") 
+		if (Other.tag == "Enemy"&& !CheckAllBurgerBitAreTrue()) 
 		{ 
 			//	Debug.Log (" The BurgerSlices touch the Enemy before falling ");
-			//m_IsEmemyOnBurger = false;
+			 m_IsEmemyOnBurger = false;
 		}
 	}
 		

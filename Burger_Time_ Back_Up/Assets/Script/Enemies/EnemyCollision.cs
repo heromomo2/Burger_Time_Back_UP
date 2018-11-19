@@ -40,12 +40,13 @@ public class EnemyCollision : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D Other)
 	{
+
 		if(Other.tag == "BurgerPart")
 		{
 			//Debug.Log ("burgerslice's position.Y:  "+Other.transform.position.y);
 			//Debug.Log ("Enemy's position.Y:  "+ transform.position.y);
 
-			if (Other.GetComponent<BurgerSlice>().IsMoving == true)
+			if (Other.GetComponent<BurgerSlice>().IsMoving)
 			{
 			  m_IsTouchBurgerSlice = true;
 

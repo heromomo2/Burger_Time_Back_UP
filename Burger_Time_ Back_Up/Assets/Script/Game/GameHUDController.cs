@@ -7,7 +7,7 @@ public class GameHUDController : MonoBehaviour {
 
 	#region UI Objects
 	[SerializeField]
-	private List<Image> m_Icons;
+	private List<GameObject> m_Icons;
 	[SerializeField]
 	private Text m_OneCupText;
 	[SerializeField]
@@ -55,13 +55,48 @@ public class GameHUDController : MonoBehaviour {
 	{
 		m_NumOfPepper -=1;	
 	}
-	public void IncreasePeppercount()
+//	public void IncreasePeppercount()
+//	{
+//		m_NumOfPepper +=1;	
+//	}
+	public void DecreaseLives()
 	{
-		m_NumOfPepper +=1;	
+		m_NumOflives -=1;
+		LiveIconDecrease ();
 	}
-	public void IncreaseLives()
+
+	private void LiveIconDecrease()
 	{
-		m_NumOflives -=1;	
+		switch (m_NumOflives)
+		{
+		case 0:
+			for (int i = 0; i < 4; i++) 
+			{
+				m_Icons [i].SetActive (false);
+			}
+			break;
+		case 1:
+			for(int i = 0; i < 3; i++)
+			{
+				m_Icons [i].SetActive(false);
+			}
+			break;
+		case 2:
+			for(int i = 0; i < 2; i++)
+			{
+				m_Icons [i].SetActive(false);
+			}
+			break;
+		case 3:
+			for(int i = 0; i < 1; i++)
+			{
+				m_Icons [i].SetActive(false);
+			}
+			break;
+		default:
+			Debug.Log ("you pass the numlives");
+			break;
+		}
 	}
 
 	private void DisplayScoreBoard ()
@@ -69,6 +104,8 @@ public class GameHUDController : MonoBehaviour {
 		m_PepperText.text ="Pepper:"+ m_NumOfPepper.ToString();
 		m_OneCupText.text = "1Cup:" + m_NumOfOneCup.ToString();
 		m_HiscoreText.text = "Hiscore: nohiscore";
+		//LiveIconDecrease ();
 	}
+
 
 }

@@ -36,18 +36,16 @@ public class EnemySpawner : MonoBehaviour {
 //			SpawnEnemy ();
 //		}
 	}
-	public void SpawnEnemy()
+	public EnemyController SpawnEnemy()
 	{
 		/*TODO: .Spawns an Enemy and  add it the list.*/
 		GameObject temp = Instantiate<GameObject> (m_EnemyPrefab);
 		temp.transform.position = this.transform.position;
-		//temp.transform.localPosition = Vector3.zero;
-		//temp = gameObject.GetComponent<EnemyController>.
 		EnemyController TempEnemy = temp.GetComponent<EnemyController>();
 		TempEnemy.StartNode (m_StartNode, m_Target );
-		//m_GameController.AddEnemyToList (TempEnemy);
 
 		Debug.Log(" SpawnEnemy is being calling");
+		return TempEnemy;
 	}
 
 	public void CheckifEnemyIsdead()

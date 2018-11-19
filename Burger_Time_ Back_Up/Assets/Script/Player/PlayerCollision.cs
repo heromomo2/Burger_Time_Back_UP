@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour {
 
-	[SerializeField] private PlayerInputController m_PlayerInputController;
+	[SerializeField]
+	private PlayerInputController m_PlayerInputController;
+	[SerializeField]
+	private GameHUDController m_GameHudController;
 	// Use this for initialization
 	void Start () 
 	{
@@ -44,6 +47,11 @@ public class PlayerCollision : MonoBehaviour {
 		{
 		//	Debug.Log ("You are on ladder");
 			m_PlayerInputController.SetIsOnLadder = true;
+		}
+		if(Other.tag == "Enemy")
+		{
+			m_PlayerInputController.PlayerIsDead ();
+			m_GameHudController.DecreaseLives ();
 		}
 	}
 
