@@ -62,7 +62,7 @@ public class EnemyCollision : MonoBehaviour {
 //					Debug.Log ("Enemy Should be riding a Burgerslice");	
 //				}
 
-				m_GameHudController.IncreaseScore();
+				//m_GameHudController.IncreaseScore();
 			}
 		}
 		if(Other.tag == "Pepper")

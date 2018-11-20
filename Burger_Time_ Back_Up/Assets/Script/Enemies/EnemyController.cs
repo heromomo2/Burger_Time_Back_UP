@@ -31,16 +31,22 @@ public class EnemyController : MonoBehaviour {
 	private EnemyCollision m_EnemyCollison;
 	// Use this for initialization
 
-
-	public void CrushTheEnemy()
+	public void StopEnemyMovement()
 	{
-		m_isCrush =true;
+		m_IsEnemyMoving = false;
+	}
+	public void LetEnemyMovement()
+	{
+		m_IsEnemyMoving = true;
+	}
+	public bool IsTheEnemyCrush()
+	{
+		{return m_isCrush;}
 	}
 	public void StartNode(Node FirstNode , Transform PlayerPosition)
 	{
 		m_TargetNode = FirstNode;
 		m_PlayerPosition = PlayerPosition;
-
 	}
 	void Start ()
 	{
@@ -70,9 +76,9 @@ public class EnemyController : MonoBehaviour {
 		/*TODO: find if the target node is blown you or you above and move in that direction. 
         *If the target node on the same platform as you move to the side it's on.
         */ 
-		if (m_isCrush) 
+		if (m_EnemyCollison.GetTouchBurgerSlice) 
 		{
-			DestroyGameObject ();
+			m_isCrush = true;
 		}
 		if (m_EnemyCollison.GetTouchPepper) 
 		{

@@ -56,7 +56,11 @@ public class GameController : MonoBehaviour {
 			DespawnAllEnemy ();
 			Debug.Log (" despawn all enemy");
 		}
-
+		if (Input.GetKey (KeyCode.B)) 
+		{
+			StopAllEnemy ();
+		}
+		DespawnCrushEnemy ();
 	}
 		
 
@@ -76,7 +80,36 @@ public class GameController : MonoBehaviour {
 			enemy.DestroyGameObject ();
 			Debug.Log (" begone enemy");
 		}
+		m_Enemies.Clear ();
 	}
+	private void DespawnCrushEnemy()
+	{
+		EnemyController tempEnemy = null;
+		foreach(EnemyController enemy in m_Enemies)
+		{
+			if (enemy.IsTheEnemyCrush()) 
+			{
+				tempEnemy = enemy;
+				m_Enemies.Remove (enemy);
+				//m_Enemies.
+				tempEnemy.DestroyGameObject ();
+				Debug.Log (" enemy was crush rip");
+			}
+
+
+		}
+
+	}
+	private void StopAllEnemy()
+	{
+		foreach(EnemyController enemy in m_Enemies)
+		{
+			enemy.StopEnemyMovement();
+			Debug.Log (" begone enemy");
+		}
+	}
+
+
 
 	/*private void SetUpInput()
 	{

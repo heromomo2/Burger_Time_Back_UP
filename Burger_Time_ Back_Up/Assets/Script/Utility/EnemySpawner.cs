@@ -13,8 +13,7 @@ public class EnemySpawner : MonoBehaviour {
 	[SerializeField]
 	 private Node m_StartNode = null;
 
-	//private List<EnemyController> m_Enemies = new List<EnemyController>(); // help keep track of enemies
-	//private List<EnemyController> m_EnemiesRemoveList = new List<EnemyController>();
+
 
 
 	// Use this for initialization
@@ -47,17 +46,5 @@ public class EnemySpawner : MonoBehaviour {
 		Debug.Log(" SpawnEnemy is being calling");
 		return TempEnemy;
 	}
-
-	public void CheckifEnemyIsdead()
-	{
-	/*TODO: check Currently a list of Enemy for dead enemies. 
-	 * Then remove them from the list and then call their destroy function.*/
-	}
-	public void DespawnAllEnemies()
-	{
-		/*TODO: Call the Destroy fuction in all  the Enemies. 
-		 * This will be call in ResetGame fuction within GsmeControll . */
-	}
-
 
 }
