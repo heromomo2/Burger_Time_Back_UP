@@ -16,7 +16,9 @@ public class GameController : MonoBehaviour {
 	private PlayerInputController m_Player;
 	[SerializeField]
 	private float m_EnemySpawnersTimer;
-	private bool m_StopEnemySpawners;
+	[SerializeField]
+	private float m_deathTimer;
+	private bool m_StopEnemySpawners = false;
 	private int m_EnemyLimit = 4;
 	private EnemyController m_TempEnemy;
 	private Coroutine m_spawnCoroutine = null;
@@ -41,6 +43,7 @@ public class GameController : MonoBehaviour {
 	void Start () 
 	{
 		m_spawnCoroutine = StartCoroutine (SpawnUpdate());
+		PlayerBackToStart ();
 	}
 	// Update is called once per frame
 	void Update () 
@@ -61,13 +64,27 @@ public class GameController : MonoBehaviour {
 			StopAllEnemy ();
 		}
 		DespawnCrushEnemy ();
+		if (m_Player.IsPlayerDead) 
+		{
+			m_GameHudController.DecreaseLives ();
+			PlayerBackToStart ();
+			StopAllEnemy ();
+			DespawnAllEnemy ();
+			m_StopEnemySpawners = true;
+			StartCoroutine (ReturnByDeathUpdate());
+		}
 	}
 		
-
+	IEnumerator ReturnByDeathUpdate()
+	{
+		yield return new WaitForSeconds(m_deathTimer);
+		m_Player.PlayerIsAlive ();
+		m_StopEnemySpawners = false;
+	}
 	IEnumerator SpawnUpdate()
 	{
 		yield return new WaitForSeconds(m_EnemySpawnersTimer);
-		if (m_Enemies.Count < m_EnemyLimit) 
+		if (m_Enemies.Count < m_EnemyLimit&& !m_StopEnemySpawners ) 
 		{
 			m_Enemies.Add (m_EnemySpawners [Random.Range (0, m_EnemySpawners.Count)].SpawnEnemy ());
 		}
@@ -84,24 +101,42 @@ public class GameController : MonoBehaviour {
 	}
 	private void DespawnCrushEnemy()
 	{
-		EnemyController tempEnemy = null;
-		foreach(EnemyController enemy in m_Enemies)
+		if (m_Enemies != null) 
 		{
-			if (enemy.IsTheEnemyCrush()) 
+			EnemyController tempEnemy = null;
+			int NumofEnemies = m_Enemies.Count;
+			for (int i = 0; i < NumofEnemies; i++) 
 			{
-				tempEnemy = enemy;
-				m_Enemies.Remove (enemy);
-				//m_Enemies.
-				tempEnemy.DestroyGameObject ();
-				Debug.Log (" enemy was crush rip");
-			}
-
-
+				NumofEnemies = m_Enemies.Count;
+				if (m_Enemies [i].IsTheEnemyCrush ()) 
+				{
+					tempEnemy = m_Enemies [i];
+					m_Enemies.Remove (tempEnemy);
+					tempEnemy.DestroyGameObject ();
+					Debug.Log (" enemy was crush rip");
+					i = 0;
+					m_GameHudController.IncreaseScore ();
+				}
+			} 
 		}
+////		foreach(EnemyController enemy in m_Enemies)
+////		{
+////			if (enemy.IsTheEnemyCrush()) 
+////			{
+////				tempEnemy = enemy;
+////				m_Enemies.Remove (enemy);
+////				//m_Enemies.
+////				tempEnemy.DestroyGameObject ();
+////				Debug.Log (" enemy was crush rip");
+////			}
+//
+//			    
+//		}
 
 	}
 	private void StopAllEnemy()
 	{
+		m_StopEnemySpawners = true;
 		foreach(EnemyController enemy in m_Enemies)
 		{
 			enemy.StopEnemyMovement();
@@ -168,6 +203,8 @@ public class GameController : MonoBehaviour {
 	 private void PlayerBackToStart()
 	{
 		m_Player.transform.position = m_PlayerStartPoint.position;
+//		m_Player.PlayerIsAlive ();
+		//m_GameHudController.DecreaseLives ();
 		//m_Player.PlayerIsAlive;
 	}
 

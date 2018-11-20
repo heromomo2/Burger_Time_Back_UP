@@ -51,7 +51,7 @@ public class PlayerCollision : MonoBehaviour {
 		if(Other.tag == "Enemy")
 		{
 			m_PlayerInputController.PlayerIsDead ();
-			m_GameHudController.DecreaseLives ();
+			//m_GameHudController.DecreaseLives ();
 		}
 	}
 

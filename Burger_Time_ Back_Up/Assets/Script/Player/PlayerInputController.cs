@@ -36,6 +36,10 @@ public class PlayerInputController : MonoBehaviour {
 	{
 		set { m_IsOnBottomPoint  = value;}
 	}
+	public   bool IsPlayerDead
+	{
+		get{return m_IsPlayerDead;}
+	}
 	public  void PlayerIsDead()
 	{
 		m_IsPlayerDead = true;
