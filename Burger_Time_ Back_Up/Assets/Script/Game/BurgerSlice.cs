@@ -17,11 +17,27 @@ public class BurgerSlice : MonoBehaviour {
 	private  bool m_IsEmemyOnBurger = false;
 	[SerializeField]
 	private  bool m_IsAtPlate = false;
+	private  bool m_IsBurgerSliceCascade= false;
+	private  bool m_IsBurgerSliceMovePoint= false; // use to given point on gameController
 	private GameObject m_Enemies = null;
 	private int temp = 0;
 
-
-	
+	public bool IsBurgerSliceMovePoints // use to given point on gameController
+	{
+		get{return m_IsBurgerSliceMovePoint;}
+	}
+	public bool IsBurgerSliceCascade
+	{
+		get{return m_IsBurgerSliceCascade;}
+	}
+	public  void BurgerSliceIsNotCascade()
+	{
+		m_IsBurgerSliceCascade = false;
+	}
+	public  void BurgerSliceIsntMovePoints()// use to given point on gameController
+	{
+		m_IsBurgerSliceMovePoint = false;
+	}
 	public bool IsAtPlate
 	{
 		get{return m_IsAtPlate;}
@@ -43,6 +59,7 @@ public class BurgerSlice : MonoBehaviour {
 		{
 			if (CheckAllBurgerBitAreTrue ()) 
 			{
+				
 				//	Debug.Log(" all the bits have been step on");
 				if (!m_IsMoving)
 				{
@@ -82,7 +99,7 @@ public class BurgerSlice : MonoBehaviour {
 		transform.position = Vector3.MoveTowards (transform.position, m_Target, m_step); ///  move the target
 
 		if (m_IsMoving)
-		{
+		{ m_IsBurgerSliceMovePoint= true;
 			if(m_Enemies != null && m_Enemies.transform.parent != this.transform)
 			{
 				m_Enemies.transform.parent = this.transform;
@@ -123,6 +140,7 @@ public class BurgerSlice : MonoBehaviour {
 		  * set our target to the same position as other slice origin-position.*/
 			Debug.Log (" The BurgerSlices are touch ");
 			m_IsAtPlate = Other.GetComponent<BurgerSlice>().IsAtPlate;
+			m_IsBurgerSliceCascade = true;
 		}
 		if (Other.tag == "Enemy") 
 		{ 

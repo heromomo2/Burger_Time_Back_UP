@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour {
 	[SerializeField]
 	private List<EnemySpawner> m_EnemySpawners;
 	[SerializeField]
+	private List<BurgerSlice> m_BurgerSlice;
+	[SerializeField]
 	private List<EnemyController> m_Enemies = null;
 	[SerializeField]
 	private Transform  m_PlayerStartPoint;
@@ -40,9 +42,10 @@ public class GameController : MonoBehaviour {
 			m_spawnCoroutine = null;
 		}
 	}
+
 	void Start () 
 	{
-		m_spawnCoroutine = StartCoroutine (SpawnUpdate());
+		//m_spawnCoroutine = StartCoroutine (SpawnUpdate());
 		PlayerBackToStart ();
 	}
 	// Update is called once per frame
@@ -66,21 +69,28 @@ public class GameController : MonoBehaviour {
 		DespawnCrushEnemy ();
 		if (m_Player.IsPlayerDead) 
 		{
-			m_GameHudController.DecreaseLives ();
+			//m_GameHudController.DecreaseLives ();
 			PlayerBackToStart ();
 			StopAllEnemy ();
 			DespawnAllEnemy ();
 			m_StopEnemySpawners = true;
-			StartCoroutine (ReturnByDeathUpdate());
+			m_Player.PlayerIsAlive ();
+			m_StopEnemySpawners = false;
+			m_GameHudController.DecreaseLives ();
+			//StartCoroutine (ReturnByDeathUpdate());
 		}
+
+		CascadeBurgerSlicesPoints();
+		//BurgerSlicesMovePoints ();
 	}
 		
-	IEnumerator ReturnByDeathUpdate()
-	{
-		yield return new WaitForSeconds(m_deathTimer);
-		m_Player.PlayerIsAlive ();
-		m_StopEnemySpawners = false;
-	}
+//	IEnumerator ReturnByDeathUpdate()
+//	{
+//		yield return new WaitForSeconds(m_deathTimer);
+//		m_Player.PlayerIsAlive ();
+//		m_StopEnemySpawners = false;
+//		m_GameHudController.DecreaseLives ();
+//	}
 	IEnumerator SpawnUpdate()
 	{
 		yield return new WaitForSeconds(m_EnemySpawnersTimer);
@@ -90,6 +100,7 @@ public class GameController : MonoBehaviour {
 		}
 		m_spawnCoroutine = StartCoroutine (SpawnUpdate());
 	}
+
 	private void DespawnAllEnemy()
 	{
 		foreach(EnemyController enemy in m_Enemies)
@@ -99,6 +110,29 @@ public class GameController : MonoBehaviour {
 		}
 		m_Enemies.Clear ();
 	}
+	private void CascadeBurgerSlicesPoints()
+	{
+		foreach(BurgerSlice burgerslice in m_BurgerSlice)
+		{
+			if (burgerslice.IsBurgerSliceCascade) 
+			{
+				m_GameHudController.IncreaseScoreByCascade ();
+				burgerslice.BurgerSliceIsNotCascade();
+			}
+		}
+	}
+	private void BurgerSlicesMovePoints()
+	{
+		foreach(BurgerSlice burgerslice in m_BurgerSlice)
+		{
+			if (burgerslice.IsBurgerSliceMovePoints) 
+			{
+				m_GameHudController.IncreaseScoreByMovingBurgerSlice ();
+				burgerslice.BurgerSliceIsntMovePoints ();     
+			}
+		}
+	}
+
 	private void DespawnCrushEnemy()
 	{
 		if (m_Enemies != null) 
@@ -114,8 +148,9 @@ public class GameController : MonoBehaviour {
 					m_Enemies.Remove (tempEnemy);
 					tempEnemy.DestroyGameObject ();
 					Debug.Log (" enemy was crush rip");
-					i = 0;
-					m_GameHudController.IncreaseScore ();
+					//i = 0;
+					NumofEnemies = m_Enemies.Count;
+					m_GameHudController.IncreaseScoreByKillEnemies ();
 				}
 			} 
 		}
