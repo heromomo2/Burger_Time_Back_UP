@@ -152,8 +152,6 @@ public class BurgerSlice : MonoBehaviour {
 			m_IsEmemyOnBurger = true;
 			//m_Enemies = Other.gameObject;
 			Debug.Log("beep beep enemy");
-
-
 			// Bottom of a burger. about to be squish
 		}
 		if (Other.tag == "Plate") 

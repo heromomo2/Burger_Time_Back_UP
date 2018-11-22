@@ -9,7 +9,7 @@ public class EnemyCollision : MonoBehaviour {
 	private bool m_IsTouchPepper = false;
 	///private bool m_IsEnem;
 	private bool m_IsTouchBurgerSlice = false;
-	private bool m_IsTopOfBurgerSlice = false;
+	//private bool m_IsTopOfBurgerSlice = false;
 	#region public fuctions
 	public bool GetTouchPepper
 	{
@@ -68,6 +68,7 @@ public class EnemyCollision : MonoBehaviour {
 		if(Other.tag == "Pepper")
 		{
 			m_IsTouchPepper = true;
+			MusicController.Instance.SwitchSFX (1);
 		}
 	}
 

@@ -25,14 +25,6 @@ public class GameController : MonoBehaviour {
 	private EnemyController m_TempEnemy;
 	private Coroutine m_spawnCoroutine = null;
 
-	/*public void AddEnemyToList (EnemyController  TempEnemy )
-	{
-		m_Enemies.Add (TempEnemy);
-	}
-	public void RemoveEnemyToList (EnemyController TempEnemy )
-	{
-		m_Enemies.Remove(TempEnemy);
-	}*/
 		
 	// Use this for initialization
 	void OnDestroy()
@@ -45,28 +37,26 @@ public class GameController : MonoBehaviour {
 
 	void Start () 
 	{
-		//m_spawnCoroutine = StartCoroutine (SpawnUpdate());
+		m_spawnCoroutine = StartCoroutine (SpawnUpdate());
 		PlayerBackToStart ();
 	}
+
 	// Update is called once per frame
 	void Update () 
 	{
-		
-//		if (Input.GetKey(KeyCode.K))
-//		{
-//			PlayerBackToStart ();
-//		}
-
 		if (Input.GetKey (KeyCode.Space)) 
 		{
 			DespawnAllEnemy ();
 			Debug.Log (" despawn all enemy");
 		}
+
 		if (Input.GetKey (KeyCode.B)) 
 		{
 			StopAllEnemy ();
 		}
+
 		DespawnCrushEnemy ();
+
 		if (m_Player.IsPlayerDead) 
 		{
 			//m_GameHudController.DecreaseLives ();
@@ -151,6 +141,7 @@ public class GameController : MonoBehaviour {
 					//i = 0;
 					NumofEnemies = m_Enemies.Count;
 					m_GameHudController.IncreaseScoreByKillEnemies ();
+					MusicController.Instance.SwitchSFX(0);
 				}
 			} 
 		}
@@ -238,9 +229,6 @@ public class GameController : MonoBehaviour {
 	 private void PlayerBackToStart()
 	{
 		m_Player.transform.position = m_PlayerStartPoint.position;
-//		m_Player.PlayerIsAlive ();
-		//m_GameHudController.DecreaseLives ();
-		//m_Player.PlayerIsAlive;
 	}
 
 }

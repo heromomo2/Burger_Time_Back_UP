@@ -9,6 +9,8 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] private Canvas m_MainMeunCanvas;
 	[SerializeField] private Canvas m_LeaderBoardCanvas;
 	[SerializeField] private Canvas m_PauseCanvas;
+	[SerializeField] private MusicController m_MusicController;
+
 	#endregion
 	#region Public Funtio
 	public void OpenMainMenu()
@@ -18,6 +20,7 @@ public class MenuController : MonoBehaviour {
 			m_LeaderBoardCanvas.enabled = false;
 			m_MainMeunCanvas.enabled = true;
 			//Debug.Log (" you pass");
+			MusicController.Instance.SwitchMusicTrack (0);
 		}
 	}
 	public void OpenLeaderBoardMenu()
@@ -27,6 +30,8 @@ public class MenuController : MonoBehaviour {
 		m_LeaderBoardCanvas.enabled = true;
 		m_MainMeunCanvas.enabled = false;
 			Debug.Log (" you pass");
+			MusicController.Instance.EndAudio ();
+			MusicController.Instance.SwitchMusicTrack (1);
 		}
 	}
 	public void ClosePauseMenu()
@@ -36,6 +41,7 @@ public class MenuController : MonoBehaviour {
 			m_PauseCanvas.enabled = false;	
 			Debug.Log (" You Close PauseMenu");	
 			Time.timeScale = 1;
+			MusicController.Instance.EndAudio ();
 		}
 	}
 	public void OpenPauseMenu()
@@ -45,6 +51,7 @@ public class MenuController : MonoBehaviour {
 			m_PauseCanvas.enabled = true;	
 		  Debug.Log (" You Open PauseMenu");
 			Time.timeScale = 0;
+			MusicController.Instance.EndAudio ();
 		}
 	}
 	public void Quit()
@@ -56,6 +63,15 @@ public class MenuController : MonoBehaviour {
 		Debug.Log ("sceneName to load:" + scenename);
 		SceneManager.LoadScene (scenename);
 		Time.timeScale = 1;
+		MusicController.Instance.EndAudio ();
+		if (scenename == "GameMode") 
+		{
+			MusicController.Instance.SwitchMusicTrack (2);
+		}
+		else 
+		{
+			MusicController.Instance.SwitchMusicTrack (0);
+		}
 	}
 	#endregion
 
