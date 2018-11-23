@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour {
 	[SerializeField]
 	private float m_deathTimer;
 	private bool m_StopEnemySpawners = false;
+	[SerializeField]
 	private int m_EnemyLimit = 4;
 	private EnemyController m_TempEnemy;
 	private Coroutine m_spawnCoroutine = null;

@@ -40,6 +40,16 @@ public class PlayerCollision : MonoBehaviour {
 		//	Debug.Log ("You are on BottomPoint");
 			m_PlayerInputController.SetIsOnBottomPoint = true;
 		}
+		if(Other.tag == "BlockRight")
+		{
+				//Debug.Log ("You can't go right");
+			m_PlayerInputController.CanntPlayerGoRight ();
+		}
+		if(Other.tag == "Blockleft")
+		{
+			Debug.Log ("You can't go left");
+			m_PlayerInputController.CanntPlayerGoLeft ();
+		}
 	}
 	void OnTriggerEnter2D(Collider2D Other)
 	{
@@ -79,6 +89,16 @@ public class PlayerCollision : MonoBehaviour {
 		{
 		//	Debug.Log ("You are off BottomPoint");
 			m_PlayerInputController.SetIsOnBottomPoint = false;
+		}
+		if(Other.tag == "BlockRight")
+		{
+			//Debug.Log ("You can go right");
+			m_PlayerInputController.CanPlayerGoRight ();
+		}
+		if(Other.tag == "Blockleft")
+		{
+			//Debug.Log ("You can go left");
+			m_PlayerInputController.CanPlayerGoLeft ();
 		}
 	}
 }

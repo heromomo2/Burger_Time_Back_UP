@@ -16,6 +16,8 @@ public class PlayerInputController : MonoBehaviour {
 	private bool  m_IsOnBottomPoint = false;
 	[SerializeField] 
 	private bool  m_IsPlayerDead = false;
+	private bool  m_CanPlayerGoRight = true;
+	private bool  m_CanPlayerGoLeft = true;
 	[SerializeField] private float speed;
 	#endregion
 
@@ -48,6 +50,22 @@ public class PlayerInputController : MonoBehaviour {
 	{
 		m_IsPlayerDead = false;
 	}
+	public void CanntPlayerGoRight()
+	{
+		m_CanPlayerGoRight = false;
+	}
+	public void CanPlayerGoRight()
+	{
+		m_CanPlayerGoRight = true;
+	}
+	public void CanntPlayerGoLeft()
+	{
+		m_CanPlayerGoLeft = false;
+	}
+	public void CanPlayerGoLeft()
+	{
+		m_CanPlayerGoLeft = true;
+	}
 	#endregion
 
 	// Use this for initialization
@@ -75,7 +93,7 @@ public class PlayerInputController : MonoBehaviour {
 		if (Input.GetKey(KeyCode.A))
 		{
 			//Debug.Log (" Akey was pressed");
-			if (!m_IsOnLadder || m_IsOnExistPoint) 
+			if (!m_IsOnLadder || m_IsOnExistPoint && m_CanPlayerGoLeft) 
 			{
 				transform.Translate (Vector3.left * speed * Time.deltaTime);
 				m_SpawnPeper.faceleft ();
@@ -85,7 +103,7 @@ public class PlayerInputController : MonoBehaviour {
 		if (Input.GetKey(KeyCode.D))
 		{
 			//Debug.Log (" Dkey was pressed");
-			if (!m_IsOnLadder|| m_IsOnExistPoint) 
+			if (!m_IsOnLadder|| m_IsOnExistPoint&& m_CanPlayerGoRight) 
 			{
 				transform.Translate (Vector3.right * speed * Time.deltaTime);
 				m_SpawnPeper.faceright ();
