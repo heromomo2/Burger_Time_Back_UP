@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour {
 	{
 		m_spawnCoroutine = StartCoroutine (SpawnUpdate());
 		PlayerBackToStart ();
+		MusicController.Instance.SwitchMusicTrack (3);
 	}
 
 	// Update is called once per frame
@@ -162,7 +163,7 @@ public class GameController : MonoBehaviour {
 	}
 	private void StopAllEnemy()
 	{
-		m_StopEnemySpawners = true;
+		m_StopEnemySpawners = true;// stop all the spawners
 		foreach(EnemyController enemy in m_Enemies)
 		{
 			enemy.StopEnemyMovement();
@@ -170,6 +171,23 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	private void AllEnemiesCanMove()
+	{
+		m_StopEnemySpawners = false;// start up all the spawners
+		foreach(EnemyController enemy in m_Enemies)
+		{
+			enemy.LetEnemyMovement ();
+			Debug.Log (" begone enemy");
+		}
+	}
+	public void PauseAllEnemies ()
+	{
+		StopAllEnemy ();
+	}
+	public void UnPauseAllEnemies ()
+	{
+		AllEnemiesCanMove ();
+	}
 
 
 	/*private void SetUpInput()

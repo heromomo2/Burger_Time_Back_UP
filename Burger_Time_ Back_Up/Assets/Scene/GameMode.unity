@@ -11508,6 +11508,8 @@ MonoBehaviour:
   m_MainMeunCanvas: {fileID: 0}
   m_LeaderBoardCanvas: {fileID: 0}
   m_PauseCanvas: {fileID: 1626393191}
+  m_GameController: {fileID: 475766150}
+  m_MusicController: {fileID: 0}
 --- !u!4 &1549893522
 Transform:
   m_ObjectHideFlags: 0

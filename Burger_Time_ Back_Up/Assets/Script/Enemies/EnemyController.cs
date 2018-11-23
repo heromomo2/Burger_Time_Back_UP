@@ -25,7 +25,9 @@ public class EnemyController : MonoBehaviour {
 	[SerializeField]
 	private Node m_LastNode = null;
 	[SerializeField]
-	private bool m_isCrush = false;
+	private bool m_IsCrush = false;
+	[SerializeField]
+	private bool m_IsStun = false;
 
 	[SerializeField]
 	private EnemyCollision m_EnemyCollison;
@@ -41,7 +43,11 @@ public class EnemyController : MonoBehaviour {
 	}
 	public bool IsTheEnemyCrush()
 	{
-		{return m_isCrush;}
+		{return m_IsCrush;}
+	}
+	public bool IsTheEnemyStun()
+	{
+		{return m_IsStun;}
 	}
 	public void StartNode(Node FirstNode , Transform PlayerPosition)
 	{
@@ -56,18 +62,6 @@ public class EnemyController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		//Debug.Log("Time.delta time :"+ Time.deltaTime);
-		//MoveEnemy ();
-
-//		EnemyAI ();
-		/*If(m_IsTouchPepper)
-		 * {
-		 * m_IsEnemyMoving = false;
-		 * StartCoroutine(EnemyisStunned())
-		 * }
-		 
-		*/
-
 		EnemyAI ();
 	}
 
@@ -78,10 +72,11 @@ public class EnemyController : MonoBehaviour {
         */ 
 		if (m_EnemyCollison.GetTouchBurgerSlice) 
 		{
-			m_isCrush = true;
+			m_IsCrush = true;
 		}
 		if (m_EnemyCollison.GetTouchPepper) 
 		{
+			m_IsStun = true;
 			m_IsEnemyMoving = false;
 			StartCoroutine ( Stun());
 		}
@@ -143,6 +138,7 @@ public class EnemyController : MonoBehaviour {
 		//reset
 		m_EnemyCollison.ResetTouchPepper(); 
 		m_IsEnemyMoving= true;
+		m_IsStun = false;
 	}
 	public void DestroyGameObject()
 	{

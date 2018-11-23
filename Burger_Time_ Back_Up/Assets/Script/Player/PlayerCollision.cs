@@ -50,8 +50,10 @@ public class PlayerCollision : MonoBehaviour {
 		}
 		if(Other.tag == "Enemy")
 		{
+			if(Other.GetComponent<EnemyController>().IsTheEnemyStun() == false)
+			{
 			m_PlayerInputController.PlayerIsDead ();
-			//m_GameHudController.DecreaseLives ();
+			}
 		}
 	}
 
