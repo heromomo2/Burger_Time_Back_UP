@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &61655763802831054
 BoxCollider2D:
@@ -118,7 +118,8 @@ MonoBehaviour:
   m_AmountTimeStun: 5
   m_TargetNode: {fileID: 0}
   m_LastNode: {fileID: 0}
-  m_isCrush: 0
+  m_IsCrush: 0
+  m_IsStun: 0
   m_EnemyCollison: {fileID: 114083276383405698}
 --- !u!212 &212431927478047824
 SpriteRenderer:

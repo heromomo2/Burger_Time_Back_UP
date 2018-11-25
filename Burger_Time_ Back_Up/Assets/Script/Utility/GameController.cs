@@ -76,13 +76,7 @@ public class GameController : MonoBehaviour {
 		//BurgerSlicesMovePoints ();
 	}
 		
-//	IEnumerator ReturnByDeathUpdate()
-//	{
-//		yield return new WaitForSeconds(m_deathTimer);
-//		m_Player.PlayerIsAlive ();
-//		m_StopEnemySpawners = false;
-//		m_GameHudController.DecreaseLives ();
-//	}
+
 	IEnumerator SpawnUpdate()
 	{
 		yield return new WaitForSeconds(m_EnemySpawnersTimer);
@@ -147,20 +141,6 @@ public class GameController : MonoBehaviour {
 				}
 			} 
 		}
-////		foreach(EnemyController enemy in m_Enemies)
-////		{
-////			if (enemy.IsTheEnemyCrush()) 
-////			{
-////				tempEnemy = enemy;
-////				m_Enemies.Remove (enemy);
-////				//m_Enemies.
-////				tempEnemy.DestroyGameObject ();
-////				Debug.Log (" enemy was crush rip");
-////			}
-//
-//			    
-//		}
-
 	}
 	private void StopAllEnemy()
 	{

@@ -99,7 +99,7 @@ public class BurgerSlice : MonoBehaviour {
 		transform.position = Vector3.MoveTowards (transform.position, m_Target, m_step); ///  move the target
 
 		if (m_IsMoving)
-		{ m_IsBurgerSliceMovePoint= true;
+		{ 
 			if(m_Enemies != null && m_Enemies.transform.parent != this.transform)
 			{
 				m_Enemies.transform.parent = this.transform;
