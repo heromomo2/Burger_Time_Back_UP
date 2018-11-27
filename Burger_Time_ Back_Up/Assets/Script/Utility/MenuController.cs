@@ -9,8 +9,10 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] private Canvas m_MainMeunCanvas;
 	[SerializeField] private Canvas m_LeaderBoardCanvas;
 	[SerializeField] private Canvas m_PauseCanvas;
+	[SerializeField] private GameObject m_NameCanvas;
+	[SerializeField] private Canvas m_GameOverCanvas;
+	                 private string m_PlayerName;
 	[SerializeField] private GameController m_GameController;
-	[SerializeField] private MusicController m_MusicController;
 
 	#endregion
 	#region Public Funtio
@@ -77,6 +79,48 @@ public class MenuController : MonoBehaviour {
 		else 
 		{
 			MusicController.Instance.SwitchMusicTrack (0);
+		}
+	}
+		
+	public void OpenNameMenu()
+	{
+		if (m_NameCanvas != null)   
+		{ 
+			m_NameCanvas.SetActive (true);
+			Debug.Log (" You Open NameMenu");
+		}
+	}
+	public bool CloseNameMenu()
+	{
+		if (m_NameCanvas != null)   
+		{ 
+			InputField m_InputField = m_NameCanvas.GetComponentInChildren<InputField> ();
+			if(m_InputField.text != null
+				&& m_InputField.text !="Enter Your Name"
+				&& m_InputField.text !="" )
+			{
+			m_PlayerName = m_InputField.text;
+				m_NameCanvas.SetActive (false);
+			Debug.Log (" You close NameMenu");
+				return true;
+			}
+		}
+		return false;
+	}
+	public void OpenGameOver()
+	{
+		if (m_GameOverCanvas != null)   
+		{ 
+			m_GameOverCanvas.enabled = true;	
+			Debug.Log (" You open GameOver");
+		}
+	}
+	public void CloseGameOver()
+	{
+		if (m_GameOverCanvas != null)   
+		{ 
+			m_GameOverCanvas.enabled = false;
+			Debug.Log (" You close GameOver");
 		}
 	}
 	#endregion

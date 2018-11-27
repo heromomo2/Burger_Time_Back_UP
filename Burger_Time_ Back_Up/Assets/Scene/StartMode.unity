@@ -1728,6 +1728,8 @@ MonoBehaviour:
   m_MainMeunCanvas: {fileID: 1397548853}
   m_LeaderBoardCanvas: {fileID: 1347740096}
   m_PauseCanvas: {fileID: 0}
+  m_NameCanvas: {fileID: 0}
+  m_PlayerName: 
   m_GameController: {fileID: 0}
   m_MusicController: {fileID: 2113305711}
 --- !u!4 &1540461725
@@ -2371,6 +2373,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 12928195661b34fbc9d3e3ded7c33780, type: 3}
   - {fileID: 8300000, guid: 8cf2136803b6b4b6a8f460d373fcbf23, type: 3}
   - {fileID: 8300000, guid: 97214d17f6b8a4fe283d66094af326a4, type: 3}
+  - {fileID: 8300000, guid: 42d4ddbaacf0a4101844b7f5afc6b6fd, type: 3}
+  - {fileID: 8300000, guid: da3002cc85833466e8bcf5febf852efc, type: 3}
   m_IsPlaying: 1
   m_Index: 0
 --- !u!4 &2113305712

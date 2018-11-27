@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour {
 	[SerializeField]
 	private GameHUDController m_GameHudController;
 	[SerializeField]
+	private MenuController m_MenuController;
+	[SerializeField]
 	private List<EnemySpawner> m_EnemySpawners;
 	[SerializeField]
 	private List<BurgerSlice> m_BurgerSlice;
@@ -25,6 +27,7 @@ public class GameController : MonoBehaviour {
 	private int m_EnemyLimit = 4;
 	private EnemyController m_TempEnemy;
 	private Coroutine m_spawnCoroutine = null;
+	private bool m_YoubeatGame = false;
 
 		
 	// Use this for initialization
@@ -41,6 +44,8 @@ public class GameController : MonoBehaviour {
 		m_spawnCoroutine = StartCoroutine (SpawnUpdate());
 		PlayerBackToStart ();
 		MusicController.Instance.SwitchMusicTrack (3);
+		m_MenuController.CloseGameOver ();
+		m_MenuController.CloseNameMenu ();
 	}
 
 	// Update is called once per frame
@@ -59,8 +64,9 @@ public class GameController : MonoBehaviour {
 
 		DespawnCrushEnemy ();
 
-		if (m_Player.IsPlayerDead && m_GameHudController.GetNumoflives > 0) 
+		if (m_Player.IsPlayerDead && m_GameHudController.GetNumoflives >= 1) 
 		{
+			MusicController.Instance.SwitchSFX (4);
 			//m_GameHudController.DecreaseLives ();
 			PlayerBackToStart ();
 			StopAllEnemy ();
@@ -75,15 +81,43 @@ public class GameController : MonoBehaviour {
 		CascadeBurgerSlicesPoints();
 		//BurgerSlicesMovePoints ();
 
-		if (m_GameHudController.GetNumoflives <= 0 || AreAllBurgerSlicesTouchingPlate())
+		if (m_GameHudController.GetNumoflives <= 0)
 		{
 			PlayerBackToStart ();
 			StopAllEnemy ();
 			DespawnAllEnemy ();
 			Debug.Log ("game over");
+			MusicController.Instance.EndAudio ();
+			m_MenuController.OpenNameMenu ();
+			if (m_MenuController.CloseNameMenu ()) 
+			{
+				m_MenuController.OpenGameOver ();
+				StartCoroutine (GameEndUpdate ());
+			}
 	    }
-		
+		if( AreAllBurgerSlicesTouchingPlate())
+		{
+			Debug.LogWarning (" AreAllBurgerSlicesTouchingPlate are  true");
+			if (!m_YoubeatGame) 
+			{ 
+				PlayerBackToStart ();
+				StopAllEnemy ();
+				DespawnAllEnemy ();
+				Debug.Log ("You won");
+				MusicController.Instance.EndAudio ();
+				MusicController.Instance.SwitchSFX (4);
+				m_YoubeatGame = true;
+			}
+		}
 	}
+
+
+	IEnumerator GameEndUpdate()
+	{
+		yield return new WaitForSeconds(5);
+		m_MenuController.LoadA("StartMode");
+	}
+
 	IEnumerator SpawnUpdate()
 	{
 		yield return new WaitForSeconds(m_EnemySpawnersTimer);
