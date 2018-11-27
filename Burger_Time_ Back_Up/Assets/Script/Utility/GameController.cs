@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour {
 
 		DespawnCrushEnemy ();
 
-		if (m_Player.IsPlayerDead) 
+		if (m_Player.IsPlayerDead && m_GameHudController.GetNumoflives > 0) 
 		{
 			//m_GameHudController.DecreaseLives ();
 			PlayerBackToStart ();
@@ -74,9 +74,16 @@ public class GameController : MonoBehaviour {
 
 		CascadeBurgerSlicesPoints();
 		//BurgerSlicesMovePoints ();
-	}
-		
 
+		if (m_GameHudController.GetNumoflives <= 0 || AreAllBurgerSlicesTouchingPlate())
+		{
+			PlayerBackToStart ();
+			StopAllEnemy ();
+			DespawnAllEnemy ();
+			Debug.Log ("game over");
+	    }
+		
+	}
 	IEnumerator SpawnUpdate()
 	{
 		yield return new WaitForSeconds(m_EnemySpawnersTimer);
@@ -152,6 +159,22 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	private void GameOver()
+	{
+
+
+	}
+	private bool AreAllBurgerSlicesTouchingPlate()
+	{
+		foreach(BurgerSlice burgerslice in m_BurgerSlice)
+		{
+			if (!burgerslice.IsAtPlate) 
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 	private void AllEnemiesCanMove()
 	{
 		m_StopEnemySpawners = false;// start up all the spawners
