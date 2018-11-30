@@ -13,6 +13,12 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] private Canvas m_GameOverCanvas;
 	                 private string m_PlayerName;
 	[SerializeField] private GameController m_GameController;
+	private bool m_IsNameCanvasclose = true;
+
+	public bool IsNameCanvasOpen
+	{
+		get{ return m_IsNameCanvasclose;}
+	}
 
 	#endregion
 	#region Public Funtio
@@ -88,24 +94,23 @@ public class MenuController : MonoBehaviour {
 		{ 
 			m_NameCanvas.SetActive (true);
 			Debug.Log (" You Open NameMenu");
+			m_IsNameCanvasclose = false;
 		}
 	}
-	public bool CloseNameMenu()
+	public void  CloseNameMenu()
 	{
 		if (m_NameCanvas != null)   
 		{ 
 			InputField m_InputField = m_NameCanvas.GetComponentInChildren<InputField> ();
-			if(m_InputField.text != null
-				&& m_InputField.text !="Enter Your Name"
-				&& m_InputField.text !="" )
+			if(m_InputField.text != null )
 			{
 			m_PlayerName = m_InputField.text;
-				m_NameCanvas.SetActive (false);
+			Data.Instance.GetPlayername (m_PlayerName);
+			m_NameCanvas.SetActive (false);
 			Debug.Log (" You close NameMenu");
-				return true;
+				m_IsNameCanvasclose = true;
 			}
 		}
-		return false;
 	}
 	public void OpenGameOver()
 	{

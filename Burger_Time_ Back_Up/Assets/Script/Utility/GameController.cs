@@ -89,7 +89,15 @@ public class GameController : MonoBehaviour {
 			Debug.Log ("game over");
 			MusicController.Instance.EndAudio ();
 			m_MenuController.OpenNameMenu ();
-			if (m_MenuController.CloseNameMenu ()) 
+			if(Data.Instance.IsYourScoreHighEnough(m_GameHudController.GetNumOfOneCup))
+			{
+				if (m_MenuController.IsNameCanvasOpen) 
+				{
+				m_MenuController.OpenGameOver ();
+				StartCoroutine (GameEndUpdate ());
+				}
+			}
+			else
 			{
 				m_MenuController.OpenGameOver ();
 				StartCoroutine (GameEndUpdate ());

@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-public class Data : Singleton<MusicController> 
-{
+public class Data : Singleton<Data> {
 	private List<int> MyListOfPlayerScore;
 	private List<string> MyListOfPlayerName;
 	private string m_TempPlayerName;
-	private string m_TempPlayerScore;
+	private int m_TempPlayerScore;
 	// Use this for initialization
 	void Start () 
 	{
@@ -31,13 +30,13 @@ public class Data : Singleton<MusicController>
 		
 	}
 
-	public bool CompareScore (int newScore) 
+	public bool IsYourScoreHighEnough (int newScore) 
 	{
 		if (PlayerPrefs.HasKey ("Leaderboard")) 
 		{
 			for (int i = 0; i < PlayerPrefs.GetInt ("SlotNum"); i++) 
 			{	
-				if (PlayerPrefs.GetInt ("MyListOfPlayerScore_" + i, MyListOfPlayerScore [i]) < newScore) 
+				if (PlayerPrefs.GetInt ("MyListOfPlayerScore_" + i ) < newScore) 
 				{   
 					return true;
 				}
@@ -54,7 +53,7 @@ public class Data : Singleton<MusicController>
 			for (int i = Position; i < PlayerPrefs.GetInt ("SlotNum"); i++) 
 			{	
 				int tempS = PlayerPrefs.GetInt("MyListOfPlayerScore_" + i);
-				int tempN = PlayerPrefs.GetString("MyListOfPlayerName_" + i);
+				string tempN = PlayerPrefs.GetString("MyListOfPlayerName_" + i);
 				if( i == Position)
 				{
 					PlayerPrefs.SetInt ("MyListOfPlayerScore_" + i, m_TempPlayerScore);
@@ -72,16 +71,20 @@ public class Data : Singleton<MusicController>
 
 
 
-//	private void GetPlayername  (string newPlayer) 
-//	{
-//		m_TempPlayerName = newPlayer;
-//	}
+	public void GetPlayername  (string newPlayer) 
+	{
+		m_TempPlayerName = newPlayer;
+		Debug.Log ("PlayerName: "+m_TempPlayerName);
+	}
 
 	private void SetPlayername  () 
 	{
-		for (int i = 0; i < PlayerPrefs.GetInt("SlotNum"); i++) 
-		{	
-			PlayerPrefs.SetString ("MyListOfPlayerName_" + i, MyListOfPlayerName [i]);
+		if (PlayerPrefs.HasKey ("Leaderboard")) 
+		{
+			for (int i = 0; i < PlayerPrefs.GetInt ("SlotNum"); i++)
+			{	
+				PlayerPrefs.SetString ("MyListOfPlayerName_" + i, MyListOfPlayerName [i]);
+			}
 		}
 	}
 
