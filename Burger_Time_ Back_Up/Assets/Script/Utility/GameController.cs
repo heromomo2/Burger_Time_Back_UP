@@ -45,25 +45,35 @@ public class GameController : MonoBehaviour {
 		PlayerBackToStart ();
 		MusicController.Instance.SwitchMusicTrack (3);
 		m_MenuController.CloseGameOver ();
-		m_MenuController.CloseNameMenu ();
+		//m_MenuController.CloseNameMenu ();
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
+		// Use to delete the all Enemies on screen. it's use testing purposes.
 		if (Input.GetKey (KeyCode.Space)) 
 		{
 			DespawnAllEnemy ();
 			Debug.Log (" despawn all enemy");
 		}
 
+		// Use to stop the all Enemies and Enemies spanwers. it's use testing purposes.
 		if (Input.GetKey (KeyCode.B)) 
 		{
 			StopAllEnemy ();
 		}
 
+		// Check if the enemy is has be crush then delete from the screen. 
 		DespawnCrushEnemy ();
 
+		/*  What do to when the player is killed.
+		 * -Place the player back to his StartPosition.
+		 * -Stop enemies and Enemyspawners.
+		 * -Remove all the enemies from screen.
+		 * -Set the player back to alive
+		 * - player lose alive.
+		*/ 
 		if (m_Player.IsPlayerDead && m_GameHudController.GetNumoflives >= 1) 
 		{
 			MusicController.Instance.SwitchSFX (4);
@@ -77,10 +87,13 @@ public class GameController : MonoBehaviour {
 			m_GameHudController.DecreaseLives ();
 			//StartCoroutine (ReturnByDeathUpdate());
 		}
-
+		//Check if burgerSlices have hit each other and giving points. 
 		CascadeBurgerSlicesPoints();
-		//BurgerSlicesMovePoints ();
 
+		/*Check if burgerSlice have move one spot and  give the player some point 
+		BurgerSlicesMovePoints ();*/
+
+		// OutOflives,Lose
 		if (m_GameHudController.GetNumoflives <= 0)
 		{
 			PlayerBackToStart ();
@@ -88,21 +101,30 @@ public class GameController : MonoBehaviour {
 			DespawnAllEnemy ();
 			Debug.Log ("game over");
 			MusicController.Instance.EndAudio ();
-			m_MenuController.OpenNameMenu ();
+
+			/* Check your score  if higher than previous highs scores.
+			 * -Open up the NameCanvan if you have highscore. You input your name and send you to the leaderboard.
+			 * If you don't have a
+			*/ 
 			if(Data.Instance.IsYourScoreHighEnough(m_GameHudController.GetNumOfOneCup))
-			{
-				if (m_MenuController.IsNameCanvasOpen) 
+			{ 
+				Debug.Log ("your score is high enough ");
+
+				if (!m_MenuController.IsNameCanvasOpen) 
 				{
-				m_MenuController.OpenGameOver ();
-				StartCoroutine (GameEndUpdate ());
+					m_MenuController.OpenNameMenu ();
 				}
-			}
+			}// you dead and don't get a high score 
 			else
 			{
 				m_MenuController.OpenGameOver ();
 				StartCoroutine (GameEndUpdate ());
 			}
 	    }
+		/*  The player has clear the level. The win condition.
+		 * - sent player back to mainmenu unless then beat a high score
+		 * - give the player bonus points  clear.
+		*/
 		if( AreAllBurgerSlicesTouchingPlate())
 		{
 			Debug.LogWarning (" AreAllBurgerSlicesTouchingPlate are  true");

@@ -13,11 +13,11 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] private Canvas m_GameOverCanvas;
 	                 private string m_PlayerName;
 	[SerializeField] private GameController m_GameController;
-	private bool m_IsNameCanvasclose = true;
+	private bool m_IsNameCanvasOpen = false;
 
 	public bool IsNameCanvasOpen
 	{
-		get{ return m_IsNameCanvasclose;}
+		get{ return m_IsNameCanvasOpen;}
 	}
 
 	#endregion
@@ -94,7 +94,7 @@ public class MenuController : MonoBehaviour {
 		{ 
 			m_NameCanvas.SetActive (true);
 			Debug.Log (" You Open NameMenu");
-			m_IsNameCanvasclose = false;
+			m_IsNameCanvasOpen = true;
 		}
 	}
 	public void  CloseNameMenu()
@@ -102,13 +102,18 @@ public class MenuController : MonoBehaviour {
 		if (m_NameCanvas != null)   
 		{ 
 			InputField m_InputField = m_NameCanvas.GetComponentInChildren<InputField> ();
-			if(m_InputField.text != null )
+			if (m_InputField.text != null)
 			{
-			m_PlayerName = m_InputField.text;
-			Data.Instance.GetPlayername (m_PlayerName);
-			m_NameCanvas.SetActive (false);
-			Debug.Log (" You close NameMenu");
-				m_IsNameCanvasclose = true;
+				m_PlayerName = m_InputField.text;
+				Data.Instance.GetPlayername (m_PlayerName);
+				m_NameCanvas.SetActive (false);
+				Debug.Log (" You close NameMenu");
+				m_IsNameCanvasOpen = false;
+				LoadA ("StartMode");
+			} 
+			else 
+			{
+				Debug.Log ("You don't have a m_InputField in NameCanvas");
 			}
 		}
 	}
