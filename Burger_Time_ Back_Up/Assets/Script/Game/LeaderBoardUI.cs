@@ -8,20 +8,12 @@ public class LeaderBoardUI : MonoBehaviour {
 	private List<Text>m_boardText;
 
 
-
-	// Use this for initialization
-	void Start () 
+	public void UpdateLeaderBoard ()
 	{
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	}
-
-	void disp ()
-	{
-
+		for (int i = 0; i < m_boardText.Count; i++) 
+		{
+			m_boardText [i].text = Data.Instance.GetLeaderBoard (i);
+		}
 
 	}
 }

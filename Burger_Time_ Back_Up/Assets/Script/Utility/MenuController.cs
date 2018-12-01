@@ -13,6 +13,7 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] private Canvas m_GameOverCanvas;
 	                 private string m_PlayerName;
 	[SerializeField] private GameController m_GameController;
+	[SerializeField] private LeaderBoardUI m_LeaderBoardUI;
 	private bool m_IsNameCanvasOpen = false;
 
 	public bool IsNameCanvasOpen
@@ -32,17 +33,20 @@ public class MenuController : MonoBehaviour {
 			MusicController.Instance.SwitchMusicTrack (0);
 		}
 	}
+
 	public void OpenLeaderBoardMenu()
 	{
-		if (m_MainMeunCanvas != null && m_LeaderBoardCanvas != null)   
+		if (m_MainMeunCanvas != null && m_LeaderBoardCanvas != null && m_LeaderBoardUI != null )   
 		{ 
 		m_LeaderBoardCanvas.enabled = true;
 		m_MainMeunCanvas.enabled = false;
 			Debug.Log (" you pass");
 			MusicController.Instance.EndAudio ();
 			MusicController.Instance.SwitchMusicTrack (1);
+			m_LeaderBoardUI.UpdateLeaderBoard ();
 		}
 	}
+
 	public void ClosePauseMenu()
 	{
 		if (m_PauseCanvas != null && m_GameController !=null)   
@@ -55,6 +59,7 @@ public class MenuController : MonoBehaviour {
 			MusicController.Instance.SwitchMusicTrack (3);
 		}
 	}
+
 	public void OpenPauseMenu()
 	{
 		if (m_PauseCanvas != null  && m_GameController !=null )   
@@ -67,11 +72,13 @@ public class MenuController : MonoBehaviour {
 			m_GameController.PauseAllEnemies ();
 		}
 	}
+
 	public void Quit()
 	{
 		Application.Quit ();
 		UnityEditor.EditorApplication.isPlaying = false;     
 	}
+
 	public void LoadA( string scenename)
 	{
 		Debug.Log ("sceneName to load:" + scenename);
@@ -97,6 +104,7 @@ public class MenuController : MonoBehaviour {
 			m_IsNameCanvasOpen = true;
 		}
 	}
+
 	public void  CloseNameMenu()
 	{
 		if (m_NameCanvas != null)   
@@ -117,6 +125,7 @@ public class MenuController : MonoBehaviour {
 			}
 		}
 	}
+
 	public void OpenGameOver()
 	{
 		if (m_GameOverCanvas != null)   
@@ -125,6 +134,7 @@ public class MenuController : MonoBehaviour {
 			Debug.Log (" You open GameOver");
 		}
 	}
+
 	public void CloseGameOver()
 	{
 		if (m_GameOverCanvas != null)   

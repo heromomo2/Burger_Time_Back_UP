@@ -1771,6 +1771,7 @@ MonoBehaviour:
   m_NameCanvas: {fileID: 0}
   m_GameOverCanvas: {fileID: 0}
   m_GameController: {fileID: 0}
+  m_LeaderBoardUI: {fileID: 1347740098}
 --- !u!4 &1540461725
 Transform:
   m_ObjectHideFlags: 0

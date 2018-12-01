@@ -7,15 +7,16 @@ public class Data : Singleton<Data> {
 	private List<string> MyListOfPlayerName;
 	private string m_TempPlayerName;
 	private int m_TempPlayerScore;
+	private int m_PositionInLeaderboard;
+	private int m_MaxSlot ;
 	// Use this for initialization
 	void Start () 
 	{
 		if (!PlayerPrefs.HasKey ("Leaderboard")) 
 		{
 			PlayerPrefs.SetString ("Leaderboard", "true");
-			PlayerPrefs.SetInt ("SlotNum", 7);
-			SetPlayername ();
-			SetPlayerScore ();
+			m_MaxSlot = 7;
+			SetPlayerNameAndScore (); 
 		} 
 		else 
 		{
@@ -34,10 +35,11 @@ public class Data : Singleton<Data> {
 	{
 		if (PlayerPrefs.HasKey ("Leaderboard")) 
 		{
-			for (int i = 0; i < PlayerPrefs.GetInt ("SlotNum"); i++) 
+			for (int i = 0; i < m_MaxSlot; i++) 
 			{	
-				if (PlayerPrefs.GetInt ("MyListOfPlayerScore_" + i ) < newScore) 
-				{   
+				if (MyListOfPlayerScore[i] < newScore) 
+				{   m_PositionInLeaderboard = i;
+					Debug.Log ("Your PositionInLeaderboard" + m_PositionInLeaderboard);
 					return true;
 				}
 			}
@@ -50,24 +52,36 @@ public class Data : Singleton<Data> {
 		if (PlayerPrefs.HasKey ("Leaderboard")) 
 		{ //TODO: add the new player name& score in the list and bump down previous player below them in leaderboard;
 			// score 
-			for (int i = Position; i < PlayerPrefs.GetInt ("SlotNum"); i++) 
+			for (int i = Position; i < m_MaxSlot; i++) 
 			{	
-				int tempS = PlayerPrefs.GetInt("MyListOfPlayerScore_" + i);
-				string tempN = PlayerPrefs.GetString("MyListOfPlayerName_" + i);
+				int tempS = MyListOfPlayerScore [i];
+				string tempN = MyListOfPlayerName [i];
 				if( i == Position)
 				{
-					PlayerPrefs.SetInt ("MyListOfPlayerScore_" + i, m_TempPlayerScore);
-					PlayerPrefs.SetString ("MyListOfPlayerName_" + i, m_TempPlayerName);
+					MyListOfPlayerScore [i] = m_TempPlayerScore;
+					MyListOfPlayerName [i] = m_TempPlayerName;
 				}
 				else
 				{
-					PlayerPrefs.SetInt ("MyListOfPlayerScore_" + i, tempS);
-					PlayerPrefs.SetString ("MyListOfPlayerName_" + i, tempN);
+					MyListOfPlayerScore [i] = tempS;
+					MyListOfPlayerName  [i] = tempN;
 			    }
 			}
 		}
 	}
-
+		
+	public string  GetLeaderBoard(int Leaderboardnum) 
+	{
+		if (PlayerPrefs.HasKey ("Leaderboard")) {
+			return MyListOfPlayerName [Leaderboardnum] + MyListOfPlayerScore [Leaderboardnum];
+		} 
+		else 
+		{
+			Debug.Log ("there is no leader data");
+			return " no data";
+		}
+	
+	}
 
 
 
@@ -77,33 +91,18 @@ public class Data : Singleton<Data> {
 		Debug.Log ("PlayerName: "+m_TempPlayerName);
 	}
 
-	private void SetPlayername  () 
+	private void SetPlayerNameAndScore  () 
 	{
 		if (PlayerPrefs.HasKey ("Leaderboard")) 
 		{
 			for (int i = 0; i < PlayerPrefs.GetInt ("SlotNum"); i++)
 			{	
-				PlayerPrefs.SetString ("MyListOfPlayerName_" + i, MyListOfPlayerName [i]);
+				 MyListOfPlayerName [i] =  i+" PLayer : ";
+				  MyListOfPlayerScore [i] = 0;
 			}
 		}
 	}
+		
 
-	private void SetPlayerScore  () 
-	{
-		for (int i = 0; i < PlayerPrefs.GetInt("SlotNum"); i++) 
-		{	
-			PlayerPrefs.SetInt ("MyListOfPlayerScore_" + i, MyListOfPlayerScore [i]);
-		}
-
-	}
-//	private Text GetPlayerScoreAndName  (Text slot ) 
-//	{
-//		for (int i = 0; i < MyListOfPlayerScore.Count; i++) 
-//		{	
-//			slot.text =	PlayerPrefs.SetString ("MyListOfPlayerName_" + i, MyListOfPlayerName [i]);
-////				+ PlayerPrefs.SetInt ("MyListOfPlayerScore_" + i, MyListOfPlayerScore [i]) ;
-//		}
-//
-//	}
 
 }
