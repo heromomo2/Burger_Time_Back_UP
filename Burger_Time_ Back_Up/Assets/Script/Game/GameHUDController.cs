@@ -19,6 +19,7 @@ public class GameHUDController : MonoBehaviour {
 	private int m_NumOfOneCup = 0;
 	private int m_NumOfPepper = 5;
 	private int m_NumOflives = 4;
+	private int m_NumOfHiscore = 413;
 	#endregion
 
 
@@ -73,6 +74,11 @@ public class GameHUDController : MonoBehaviour {
 		m_NumOflives -=1;
 		LiveIconDecrease ();
 	}
+	public void SetHiscorenum( int TopHiscore)
+	{
+		m_NumOfHiscore = TopHiscore;
+	}
+
 
 	private void LiveIconDecrease()
 	{
@@ -112,7 +118,7 @@ public class GameHUDController : MonoBehaviour {
 	{
 		m_PepperText.text ="Pepper:"+ m_NumOfPepper.ToString();
 		m_OneCupText.text = "1Cup:" + m_NumOfOneCup.ToString();
-		m_HiscoreText.text = "Hiscore: nohiscore";
+		m_HiscoreText.text = "Hiscore: "+ m_NumOfHiscore;
 		//LiveIconDecrease ();
 	}
 

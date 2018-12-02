@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour {
 		PlayerBackToStart ();
 		MusicController.Instance.SwitchMusicTrack (3);
 		m_MenuController.CloseGameOver ();
+		m_GameHudController.SetHiscorenum (Data.Instance.GetTopHiscore());
 		//m_MenuController.CloseNameMenu ();
 	}
 

@@ -12689,6 +12689,7 @@ MonoBehaviour:
   m_NameCanvas: {fileID: 1282322879}
   m_GameOverCanvas: {fileID: 1630950101}
   m_GameController: {fileID: 475766150}
+  m_LeaderBoardUI: {fileID: 0}
 --- !u!4 &1549893522
 Transform:
   m_ObjectHideFlags: 0
@@ -13278,7 +13279,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1630950099
 MonoBehaviour:
   m_ObjectHideFlags: 0
