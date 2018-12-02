@@ -50,13 +50,20 @@ public class GameHUDController : MonoBehaviour {
 	}
 	public void IncreaseScoreByMovingBurgerSlice()
 	{
-		m_NumOfOneCup += 15;	
+		m_NumOfOneCup += 50;	
 	}
 	public void IncreaseScoreByKillEnemies()
 	{
-		m_NumOfOneCup += 50;	
+		m_NumOfOneCup += 100;	
 	}
-
+	public void IncreaseScoreByUnusedPeper()
+	{
+		m_NumOfOneCup += m_NumOfPepper * 50;	
+	}
+	public void IncreaseScoreByClearingLevel ()
+	{
+		m_NumOfOneCup += 1000;	
+	}
 	public void IncreaseScoreByCascade ()
 	{
 		m_NumOfOneCup += 100;	

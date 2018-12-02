@@ -58,7 +58,7 @@ public class BurgerSlice : MonoBehaviour {
 	    if (!m_IsAtPlate) 
 		{
 			if (CheckAllBurgerBitAreTrue ()) 
-			{
+			{ 
 				
 				//	Debug.Log(" all the bits have been step on");
 				if (!m_IsMoving)
@@ -119,7 +119,7 @@ public class BurgerSlice : MonoBehaviour {
 						temp = 0;
 					}
 				}
-
+				m_IsBurgerSliceMovePoint = true;
 				m_IsMoving = false;
 				if (!m_IsEmemyOnBurger) 
 				{/*If a ememy  on a burgerslice keep failing  */

@@ -53,6 +53,11 @@ public class Data : Singleton<Data> {
 		return MyListOfPlayerScore [0];
 	}
 
+	public int GetPositionInLeaderboard () 
+	{
+		return m_PositionInLeaderboard;
+	}
+
 
 	private void SortLeaderBoard (int Position) 
 	{ // feed in the Position in where the player is going in the list4.
@@ -95,7 +100,7 @@ public class Data : Singleton<Data> {
 			for (int i = 0; i < m_MaxSlot; i++)
 			{	
 				MyListOfPlayerName.Add ("PLayer");
-				MyListOfPlayerScore.Add(0);
+				MyListOfPlayerScore.Add(250);
 			}
 		}
 	}

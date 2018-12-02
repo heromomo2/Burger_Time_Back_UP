@@ -15,10 +15,17 @@ public class MenuController : MonoBehaviour {
 	[SerializeField] private GameController m_GameController;
 	[SerializeField] private LeaderBoardUI m_LeaderBoardUI;
 	private bool m_IsNameCanvasOpen = false;
+	private bool m_IsGameOverCanvasOpen = false;
+
 
 	public bool IsNameCanvasOpen
 	{
 		get{ return m_IsNameCanvasOpen;}
+	}
+
+	public bool IsGameOverCanvasOpen 
+	{
+		get{ return m_IsGameOverCanvasOpen ;}
 	}
 
 	#endregion
@@ -101,7 +108,7 @@ public class MenuController : MonoBehaviour {
 		{ 
 			m_NameCanvas.SetActive (true);
 			Debug.Log (" You Open NameMenu");
-			m_IsNameCanvasOpen = true;
+			//m_IsNameCanvasOpen = true;
 		}
 	}
 
@@ -116,8 +123,8 @@ public class MenuController : MonoBehaviour {
 				Data.Instance.GetPlayername (m_PlayerName);
 				m_NameCanvas.SetActive (false);
 				Debug.Log (" You close NameMenu");
-				m_IsNameCanvasOpen = false;
-				LoadA ("StartMode");
+				//m_IsNameCanvasOpen = false;
+				OpenGameOver();
 			} 
 			else 
 			{
@@ -132,6 +139,7 @@ public class MenuController : MonoBehaviour {
 		{ 
 			m_GameOverCanvas.enabled = true;	
 			Debug.Log (" You open GameOver");
+			m_IsGameOverCanvasOpen = true;
 		}
 	}
 

@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour {
 	[SerializeField]
 	private PlayerInputController m_Player;
 	[SerializeField]
+	private GameOver m_GameOverUI;
+	[SerializeField]
 	private float m_EnemySpawnersTimer;
 	[SerializeField]
 	private float m_deathTimer;
@@ -28,6 +30,7 @@ public class GameController : MonoBehaviour {
 	private EnemyController m_TempEnemy;
 	private Coroutine m_spawnCoroutine = null;
 	private bool m_YoubeatGame = false;
+	private bool m_DidYouGotBounsPoint = false;
 
 		
 	// Use this for initialization
@@ -91,8 +94,8 @@ public class GameController : MonoBehaviour {
 		//Check if burgerSlices have hit each other and giving points. 
 		CascadeBurgerSlicesPoints();
 
-		/*Check if burgerSlice have move one spot and  give the player some point 
-		BurgerSlicesMovePoints ();*/
+		/*Check if burgerSlice have move one spot and  give the player some point */
+		BurgerSlicesMovePoints ();
 
 		// OutOflives,Lose
 		if (m_GameHudController.GetNumoflives <= 0)
@@ -100,6 +103,11 @@ public class GameController : MonoBehaviour {
 			PlayerBackToStart ();
 			StopAllEnemy ();
 			DespawnAllEnemy ();
+			if (!m_DidYouGotBounsPoint) 
+			{
+				m_GameHudController.IncreaseScoreByUnusedPeper ();
+				m_DidYouGotBounsPoint = true;
+			}
 			Debug.Log ("game over");
 			MusicController.Instance.EndAudio ();
 
@@ -111,13 +119,18 @@ public class GameController : MonoBehaviour {
 			{ 
 				Debug.Log ("your score is high enough ");
 
-				if (!m_MenuController.IsNameCanvasOpen) 
-				{
 					m_MenuController.OpenNameMenu ();
+				m_GameOverUI.GameOverPage (false, true, Data.Instance.GetPositionInLeaderboard());
+
+				if(m_MenuController.IsGameOverCanvasOpen)
+				{
+					StartCoroutine (GameEndUpdate ());
 				}
+
 			}// you dead and don't get a high score 
 			else
 			{
+				m_GameOverUI.GameOverPage (false, false, 10);
 				m_MenuController.OpenGameOver ();
 				StartCoroutine (GameEndUpdate ());
 			}
@@ -135,6 +148,11 @@ public class GameController : MonoBehaviour {
 				StopAllEnemy ();
 				DespawnAllEnemy ();
 				Debug.Log ("You won");
+				if (!m_DidYouGotBounsPoint) 
+				{
+					m_GameHudController.IncreaseScoreByUnusedPeper ();
+					m_DidYouGotBounsPoint = true;
+				}
 				MusicController.Instance.EndAudio ();
 				MusicController.Instance.SwitchSFX (4);
 				m_YoubeatGame = true;
@@ -214,6 +232,7 @@ public class GameController : MonoBehaviour {
 			} 
 		}
 	}
+
 	private void StopAllEnemy()
 	{
 		m_StopEnemySpawners = true;// stop all the spawners
@@ -223,12 +242,7 @@ public class GameController : MonoBehaviour {
 			Debug.Log (" begone enemy");
 		}
 	}
-
-	private void GameOver()
-	{
-
-
-	}
+		
 	private bool AreAllBurgerSlicesTouchingPlate()
 	{
 		foreach(BurgerSlice burgerslice in m_BurgerSlice)
