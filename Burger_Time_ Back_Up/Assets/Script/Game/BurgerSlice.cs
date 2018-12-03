@@ -55,24 +55,28 @@ public class BurgerSlice : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-	    if (!m_IsAtPlate) 
-		{
-			if (CheckAllBurgerBitAreTrue ()) 
-			{ 
-				
+		if (CheckAllBurgerBitAreTrue ()) 
+		{ 
+			if (!m_IsAtPlate) 
+			{
 				//	Debug.Log(" all the bits have been step on");
-				if (!m_IsMoving)
+				if (!m_IsMoving) 
 				{
 					m_IsMoving = true;
 					/* Target position will be a constant downward
 				 * until we get the position of the next burger slice. */
 
-					m_Target =m_TargetSpots[m_Index].transform.position;
+					m_Target = m_TargetSpots [m_Index].transform.position;
 				}
 				/* Call the MoveBurgerSlice fuction to move all bits down */
 				MoveBurgerSlice ();
+			} 
+			else 
+			{
+				transform.position = m_Target;
 			}
 		}
+		
 	}
 	#region private fuctions
 
