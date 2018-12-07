@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114499627783200266}
   - component: {fileID: 50234839607513744}
   - component: {fileID: 61640406651212112}
+  - component: {fileID: 114903541287016086}
   m_Layer: 0
   m_Name: Top_Bum
   m_TagString: BurgerPart
@@ -467,6 +468,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DownFactor: -0.2
+--- !u!114 &114903541287016086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1184130831670318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f6734fe49cd4d478fbe166389e5a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_worldPositon: {x: 0, y: 0, z: 0}
+  m_worldRotation: {x: 0, y: 0, z: 0}
+  m_worldScale: {x: 0, y: 0, z: 0}
 --- !u!212 &212325846227820446
 SpriteRenderer:
   m_ObjectHideFlags: 1

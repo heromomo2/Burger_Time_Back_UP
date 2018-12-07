@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 114240811884178726}
   - component: {fileID: 50171456712681536}
   - component: {fileID: 61020844826611526}
+  - component: {fileID: 114260942067529926}
   m_Layer: 0
   m_Name: Patty_Slince
   m_TagString: BurgerPart
@@ -419,6 +420,20 @@ MonoBehaviour:
   m_Speed: 2.5
   m_Index: 1
   m_IsAtPlate: 0
+--- !u!114 &114260942067529926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1264425935189340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f6734fe49cd4d478fbe166389e5a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_worldPositon: {x: 0, y: 0, z: 0}
+  m_worldRotation: {x: 0, y: 0, z: 0}
+  m_worldScale: {x: 0, y: 0, z: 0}
 --- !u!114 &114300658056722480
 MonoBehaviour:
   m_ObjectHideFlags: 1

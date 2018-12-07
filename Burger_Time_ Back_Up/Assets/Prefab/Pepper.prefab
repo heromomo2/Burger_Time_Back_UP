@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212736235475921992}
   - component: {fileID: 61556525682111056}
   - component: {fileID: 114215916077275338}
+  - component: {fileID: 114491775194656716}
   m_Layer: 0
   m_Name: Pepper
   m_TagString: Pepper
@@ -79,6 +80,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DespawnTime: 0.5
+--- !u!114 &114491775194656716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1013399101186180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f6734fe49cd4d478fbe166389e5a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_worldPositon: {x: 0, y: 0, z: 0}
+  m_worldRotation: {x: 0, y: 0, z: 0}
+  m_worldScale: {x: 0, y: 0, z: 0}
 --- !u!212 &212736235475921992
 SpriteRenderer:
   m_ObjectHideFlags: 1

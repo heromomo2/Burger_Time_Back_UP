@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour {
 		EnemyController TempEnemy = temp.GetComponent<EnemyController>();
 		TempEnemy.StartNode (m_StartNode, m_Target );
 
-		Debug.Log(" SpawnEnemy is being calling");
+//		Debug.Log(" SpawnEnemy is being calling");
 		return TempEnemy;
 	}
 

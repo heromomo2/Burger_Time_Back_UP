@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212420361643679834}
   - component: {fileID: 61619382731096202}
   - component: {fileID: 114542527803927054}
+  - component: {fileID: 114568215243265030}
   m_Layer: 0
   m_Name: Bottom_Bun_Bit
   m_TagString: Untagged
@@ -79,6 +80,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_DownFactor: 2
+--- !u!114 &114568215243265030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397806566730698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99f6734fe49cd4d478fbe166389e5a2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_worldPositon: {x: 0, y: 0, z: 0}
+  m_worldRotation: {x: 0, y: 0, z: 0}
+  m_worldScale: {x: 0, y: 0, z: 0}
 --- !u!212 &212420361643679834
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -37,7 +37,7 @@ public class BurgerBit : MonoBehaviour {
 			if (!m_IsStepped)
 			{
 				m_IsStepped = true;
-					Debug.Log("IsStepped:  true ");
+//					Debug.Log("IsStepped:  true ");
 				//PushBitdown ();
 			}
 		}

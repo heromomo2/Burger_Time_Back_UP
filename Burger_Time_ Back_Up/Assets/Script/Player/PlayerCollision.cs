@@ -47,7 +47,7 @@ public class PlayerCollision : MonoBehaviour {
 		}
 		if(Other.tag == "Blockleft")
 		{
-			Debug.Log ("You can't go left");
+//			Debug.Log ("You can't go left");
 			m_PlayerInputController.CanntPlayerGoLeft ();
 		}
 	}

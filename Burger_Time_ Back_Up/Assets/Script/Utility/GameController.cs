@@ -147,7 +147,7 @@ public class GameController : MonoBehaviour {
 				PlayerBackToStart ();
 				StopAllEnemy ();
 				DespawnAllEnemy ();
-				Debug.Log ("You won");
+				Debug.LogWarning ("You won the game.");
 				if (!m_DidYouGotBounsPoint) 
 				{
 					m_GameHudController.IncreaseScoreByUnusedPeper ();
@@ -239,7 +239,7 @@ public class GameController : MonoBehaviour {
 		foreach(EnemyController enemy in m_Enemies)
 		{
 			enemy.StopEnemyMovement();
-			Debug.Log (" begone enemy");
+//			Debug.Log (" begone enemy");
 		}
 	}
 		
@@ -260,7 +260,7 @@ public class GameController : MonoBehaviour {
 		foreach(EnemyController enemy in m_Enemies)
 		{
 			enemy.LetEnemyMovement ();
-			Debug.Log (" begone enemy");
+//			Debug.Log (" begone enemy");
 		}
 	}
 	public void PauseAllEnemies ()

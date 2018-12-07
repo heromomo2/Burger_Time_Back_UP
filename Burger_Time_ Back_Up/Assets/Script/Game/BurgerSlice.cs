@@ -139,7 +139,7 @@ public class BurgerSlice : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D Other)
 	{
-		if (Other.tag == "BurgerPart" && CheckAllBurgerBitAreTrue()&& !m_IsAtPlate ) 
+		if (Other.tag == "BurgerPart" && CheckAllBurgerBitAreTrue() && !m_IsAtPlate )
 		{/* If two BurgerSlices are touching and all bits have been stepped on then 
 		  * set our target to the same position as other slice origin-position.*/
 			Debug.Log (" The BurgerSlices are touch ");
@@ -155,7 +155,7 @@ public class BurgerSlice : MonoBehaviour {
 			// Top of a burger. Enemy on a slice whit about to fail.
 			m_IsEmemyOnBurger = true;
 			//m_Enemies = Other.gameObject;
-			Debug.Log("beep beep enemy");
+		//	Debug.Log("beep beep enemy");
 			// Bottom of a burger. about to be squish
 		}
 		if (Other.tag == "Plate") 
