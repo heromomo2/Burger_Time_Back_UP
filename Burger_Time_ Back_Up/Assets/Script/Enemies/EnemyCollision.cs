@@ -68,7 +68,7 @@ public class EnemyCollision : MonoBehaviour {
 		if(Other.tag == "Pepper")
 		{
 			m_IsTouchPepper = true;
-			MusicController.Instance.SwitchSFX (1);
+			MusicController.Instance.SwitchSFX (1,1);
 		}
 	}
 

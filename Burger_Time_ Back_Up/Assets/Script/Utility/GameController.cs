@@ -80,7 +80,7 @@ public class GameController : MonoBehaviour {
 		*/ 
 		if (m_Player.IsPlayerDead && m_GameHudController.GetNumoflives >= 1) 
 		{
-			MusicController.Instance.SwitchSFX (4);
+			MusicController.Instance.SwitchSFX (4,1);
 			//m_GameHudController.DecreaseLives ();
 			PlayerBackToStart ();
 			StopAllEnemy ();
@@ -154,7 +154,7 @@ public class GameController : MonoBehaviour {
 					m_DidYouGotBounsPoint = true;
 				}
 				MusicController.Instance.EndAudio ();
-				MusicController.Instance.SwitchSFX (4);
+				MusicController.Instance.SwitchSFX (4, 1);
 				m_YoubeatGame = true;
 			}
 		}
@@ -194,6 +194,7 @@ public class GameController : MonoBehaviour {
 			{
 				m_GameHudController.IncreaseScoreByCascade ();
 				burgerslice.BurgerSliceIsNotCascade();
+				MusicController.Instance.SwitchSFX(5 , 2);
 			}
 		}
 	}
@@ -204,7 +205,8 @@ public class GameController : MonoBehaviour {
 			if (burgerslice.IsBurgerSliceMovePoints) 
 			{
 				m_GameHudController.IncreaseScoreByMovingBurgerSlice ();
-				burgerslice.BurgerSliceIsntMovePoints ();     
+				burgerslice.BurgerSliceIsntMovePoints ();
+				MusicController.Instance.SwitchSFX(5 , 2);
 			}
 		}
 	}
@@ -227,7 +229,8 @@ public class GameController : MonoBehaviour {
 					//i = 0;
 					NumofEnemies = m_Enemies.Count;
 					m_GameHudController.IncreaseScoreByKillEnemies ();
-					MusicController.Instance.SwitchSFX(0);
+					MusicController.Instance.SwitchSFX(0 , 1);
+					MusicController.Instance.SwitchSFX(5 , 2);
 				}
 			} 
 		}

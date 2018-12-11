@@ -9,7 +9,7 @@ public class Pepper : MonoBehaviour {
 	void Start () 
 	{
 		StartCoroutine (DespawnUpdate());
-		MusicController.Instance.SwitchSFX (2);
+		MusicController.Instance.SwitchSFX (2,1);
 	}
 	
 	// Update is called once per frame

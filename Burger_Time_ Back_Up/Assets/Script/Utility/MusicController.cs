@@ -30,15 +30,15 @@ public class MusicController : Singleton<MusicController> {
 
 		if (Input.GetKeyDown (KeyCode.Alpha1)) 
 		{
-			SwitchSFX (0);
+			SwitchSFX (0 ,1);
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha2)) 
 		{
-			SwitchSFX (1);
+			SwitchSFX (1,1);
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha3)) 
 		{
-			SwitchSFX (2);
+			SwitchSFX (2,1);
 		}
 	}
 
@@ -67,11 +67,11 @@ public class MusicController : Singleton<MusicController> {
 		}
 	}
 
-	public void SwitchSFX(int Sfxnum)
+	public void SwitchSFX(int Sfxnum, int SfxSource)
 	{
-		if (m_AudioSource[1] != null && m_SFXAudioClip != null) 
+		if (m_AudioSource[SfxSource] != null && m_SFXAudioClip != null) 
 		{
-			m_AudioSource[1].clip = m_SFXAudioClip [Sfxnum];
+			m_AudioSource[SfxSource].clip = m_SFXAudioClip [Sfxnum];
 			PlaySFX ();
 		}
 	}
