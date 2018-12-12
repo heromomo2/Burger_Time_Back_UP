@@ -154,7 +154,7 @@ public class GameController : MonoBehaviour {
 					m_DidYouGotBounsPoint = true;
 				}
 				MusicController.Instance.EndAudio ();
-				MusicController.Instance.SwitchSFX (4, 1);
+				MusicController.Instance.SwitchSFX (5, 1);
 				m_YoubeatGame = true;
 			}
 		}
@@ -194,7 +194,7 @@ public class GameController : MonoBehaviour {
 			{
 				m_GameHudController.IncreaseScoreByCascade ();
 				burgerslice.BurgerSliceIsNotCascade();
-				MusicController.Instance.SwitchSFX(5 , 2);
+				MusicController.Instance.SwitchSFX(5 , 1);
 			}
 		}
 	}
@@ -206,7 +206,9 @@ public class GameController : MonoBehaviour {
 			{
 				m_GameHudController.IncreaseScoreByMovingBurgerSlice ();
 				burgerslice.BurgerSliceIsntMovePoints ();
-				MusicController.Instance.SwitchSFX(5 , 2);
+				MusicController.Instance.SwitchSFX(5 , 1);
+				MusicController.Instance.SwitchSFX(6, 2);
+
 			}
 		}
 	}
@@ -229,8 +231,8 @@ public class GameController : MonoBehaviour {
 					//i = 0;
 					NumofEnemies = m_Enemies.Count;
 					m_GameHudController.IncreaseScoreByKillEnemies ();
-					MusicController.Instance.SwitchSFX(0 , 1);
-					MusicController.Instance.SwitchSFX(5 , 2);
+					MusicController.Instance.SwitchSFX(0 , 0);
+					MusicController.Instance.SwitchSFX(5 , 1);
 				}
 			} 
 		}

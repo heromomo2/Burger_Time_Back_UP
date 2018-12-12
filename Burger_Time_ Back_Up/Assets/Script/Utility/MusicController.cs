@@ -5,8 +5,8 @@ using UnityEngine;
 public class MusicController : Singleton<MusicController> {
 
 	#region Variables
-	//[SerializeField]
-	//private AudioSource m_MusicAudioSource,m_SFXAudioSource; 
+	[SerializeField]
+	private AudioSource m_MusicAudioSource; 
 	[SerializeField]
 	private List <AudioSource> m_AudioSource; 
 	[SerializeField] private List <AudioClip> m_MusicAudioClip = new List<AudioClip>(); 
@@ -30,39 +30,43 @@ public class MusicController : Singleton<MusicController> {
 
 		if (Input.GetKeyDown (KeyCode.Alpha1)) 
 		{
-			SwitchSFX (0 ,1);
+			SwitchSFX (0,0);
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha2)) 
 		{
-			SwitchSFX (1,1);
+			SwitchSFX (1,0);
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha3)) 
 		{
-			SwitchSFX (2,1);
+			SwitchSFX (2,0);
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha4)) 
+		{
+			SwitchSFX (5,1);
 		}
 	}
 
 	public void PlayMusic()
 	{
-		if (m_AudioSource[0] != null && m_MusicAudioClip != null) 
+		if (m_MusicAudioSource != null && m_MusicAudioClip != null) 
 		{	
-			m_AudioSource[0].Play ();
+			m_MusicAudioSource.Play ();
 		}
 	}
 
-	public void PlaySFX()
+	public void PlaySFX(int SfxSource)
 	{
-		if (m_AudioSource[1] != null && m_SFXAudioClip != null) 
+		if (m_AudioSource[SfxSource] != null && m_SFXAudioClip != null) 
 		{	
-			m_AudioSource[1].Play ();
+			m_AudioSource[SfxSource].Play ();
 		}
 	}
 
 	public void SwitchMusicTrack(int Musicnum)
 	{
-		if (m_AudioSource[0] != null && m_MusicAudioClip != null)
+		if (m_MusicAudioSource != null && m_MusicAudioClip != null)
 		{	
-			m_AudioSource[0].clip = m_MusicAudioClip [Musicnum];
+			m_MusicAudioSource.clip = m_MusicAudioClip [Musicnum];
 			PlayMusic ();
 		}
 	}
@@ -72,7 +76,7 @@ public class MusicController : Singleton<MusicController> {
 		if (m_AudioSource[SfxSource] != null && m_SFXAudioClip != null) 
 		{
 			m_AudioSource[SfxSource].clip = m_SFXAudioClip [Sfxnum];
-			PlaySFX ();
+			PlaySFX (SfxSource);
 		}
 	}
 
