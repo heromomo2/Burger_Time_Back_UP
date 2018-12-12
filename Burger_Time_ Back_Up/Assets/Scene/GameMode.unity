@@ -1510,6 +1510,10 @@ Prefab:
       propertyPath: m_Color.b
       value: 0.58431375
       objectReference: {fileID: 0}
+    - target: {fileID: 1577878141220628, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
+      propertyPath: m_TagString
+      value: Plate
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
   m_IsPrefabParent: 0
@@ -2678,6 +2682,31 @@ Transform:
   m_PrefabParentObject: {fileID: 4991027570097926, guid: 94c3395d00ead437f918bb0e83d77deb,
     type: 2}
   m_PrefabInternal: {fileID: 162272422}
+--- !u!61 &325253368
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 325253366}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.54, y: 3}
+    newSize: {x: 2.54, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.54, y: 3}
+  m_EdgeRadius: 0
 --- !u!114 &325253369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4600,7 +4629,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4991027570097926, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1577878141220628, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
       propertyPath: m_Name
@@ -5157,6 +5186,31 @@ Transform:
   m_PrefabParentObject: {fileID: 4991027570097926, guid: 94c3395d00ead437f918bb0e83d77deb,
     type: 2}
   m_PrefabInternal: {fileID: 1207029871}
+--- !u!61 &598283324
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598283322}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.54, y: 3}
+    newSize: {x: 2.54, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.54, y: 3}
+  m_EdgeRadius: 0
 --- !u!114 &598283325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6657,6 +6711,31 @@ Transform:
   m_PrefabParentObject: {fileID: 4991027570097926, guid: 94c3395d00ead437f918bb0e83d77deb,
     type: 2}
   m_PrefabInternal: {fileID: 1710251794}
+--- !u!61 &764772475
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 764772473}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.54, y: 3}
+    newSize: {x: 2.54, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.54, y: 3}
+  m_EdgeRadius: 0
 --- !u!114 &764772476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8007,7 +8086,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4991027570097926, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1577878141220628, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
       propertyPath: m_Name
@@ -10344,6 +10423,10 @@ Prefab:
         type: 2}
       propertyPath: m_Color.b
       value: 0.58431375
+      objectReference: {fileID: 0}
+    - target: {fileID: 1577878141220628, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
+      propertyPath: m_TagString
+      value: Plate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
@@ -13724,10 +13807,10 @@ Transform:
   - {fileID: 227771758}
   - {fileID: 1531515163}
   - {fileID: 1484778843}
-  - {fileID: 1800943448}
   - {fileID: 1098957914}
   - {fileID: 236244197}
   - {fileID: 1571539214}
+  - {fileID: 1800943448}
   m_Father: {fileID: 1551026084}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14339,7 +14422,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1577878141220628, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: Plate
       objectReference: {fileID: 0}
     - target: {fileID: 212577574517118398, guid: 94c3395d00ead437f918bb0e83d77deb,
         type: 2}
@@ -14999,6 +15082,31 @@ GameObject:
   m_PrefabParentObject: {fileID: 1577878141220628, guid: 94c3395d00ead437f918bb0e83d77deb,
     type: 2}
   m_PrefabInternal: {fileID: 1893041185}
+--- !u!61 &1800943447
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1800943446}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.54, y: 3}
+    newSize: {x: 2.54, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.54, y: 3}
+  m_EdgeRadius: 0
 --- !u!4 &1800943448 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4991027570097926, guid: 94c3395d00ead437f918bb0e83d77deb,
@@ -15842,7 +15950,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4991027570097926, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1577878141220628, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
       propertyPath: m_Name
@@ -15865,7 +15973,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1577878141220628, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
       propertyPath: m_TagString
-      value: Untagged
+      value: Plate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
@@ -16154,7 +16262,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4991027570097926, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1577878141220628, guid: 94c3395d00ead437f918bb0e83d77deb, type: 2}
       propertyPath: m_Name

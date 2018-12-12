@@ -22,7 +22,7 @@ public class GameOver : MonoBehaviour {
 	{
 		if (DidYouClearLevel)
 		{
-			m_GameOverTitleText.text = "Victory";
+			m_GameOverTitleText.text = "LeveL Clear!!!";
 			m_GameOverTitleText.color = Color.green;
 		} 
 		else 
@@ -31,12 +31,15 @@ public class GameOver : MonoBehaviour {
 			m_GameOverTitleText.color = Color.blue;
 		}
 
-		if (DidYouGetAHighScore) {
+		if (DidYouGetAHighScore) 
+		{
 			if (DidYouClearLevel) 
 			{
 				m_NewHiscoreText.color = Color.green;
 			}
-			switch (Position) {
+
+			switch (Position) 
+			{
 			case 1:
 				m_NewHiscoreText.text = "congratulations You're First place";
 				break;

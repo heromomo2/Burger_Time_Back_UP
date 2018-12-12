@@ -102,6 +102,7 @@ public class GameController : MonoBehaviour {
 		{
 			PlayerBackToStart ();
 			StopAllEnemy ();
+			m_Player.StopPlayer ();
 			DespawnAllEnemy ();
 			if (!m_DidYouGotBounsPoint) 
 			{
@@ -145,17 +146,38 @@ public class GameController : MonoBehaviour {
 			if (!m_YoubeatGame) 
 			{ 
 				PlayerBackToStart ();
+				m_Player.StopPlayer ();
 				StopAllEnemy ();
 				DespawnAllEnemy ();
 				Debug.LogWarning ("You won the game.");
+
 				if (!m_DidYouGotBounsPoint) 
 				{
 					m_GameHudController.IncreaseScoreByUnusedPeper ();
 					m_DidYouGotBounsPoint = true;
+					MusicController.Instance.EndAudio ();
+					MusicController.Instance.SwitchSFX (3, 2);
 				}
-				MusicController.Instance.EndAudio ();
-				MusicController.Instance.SwitchSFX (5, 1);
-				m_YoubeatGame = true;
+
+				if(Data.Instance.IsYourScoreHighEnough(m_GameHudController.GetNumOfOneCup))
+				{ 
+					Debug.Log ("your score is high enough ");
+
+					m_MenuController.OpenNameMenu ();
+					m_GameOverUI.GameOverPage (true, true, Data.Instance.GetPositionInLeaderboard());
+
+					if(m_MenuController.IsGameOverCanvasOpen)
+					{
+						StartCoroutine (GameEndUpdate ());
+					}
+
+				}// you dead and don't get a high score 
+				else
+				{
+					m_GameOverUI.GameOverPage (true, false, 89);
+					m_MenuController.OpenGameOver ();
+					StartCoroutine (GameEndUpdate ());
+				}
 			}
 		}
 	}

@@ -17,6 +17,7 @@ public class PlayerInputController : MonoBehaviour {
 	[SerializeField] 
 	private bool  m_IsPlayerDead = false;
 	private bool  m_CanPlayerGoRight = true;
+	private bool  m_StopPlayer = false;
 	private bool  m_CanPlayerGoLeft = true;
 	[SerializeField] private float speed;
 	#endregion
@@ -41,6 +42,14 @@ public class PlayerInputController : MonoBehaviour {
 	public   bool IsPlayerDead
 	{
 		get{return m_IsPlayerDead;}
+	}
+	public  void StopPlayer()
+	{
+		m_StopPlayer = true;
+	}
+	public  void AllowPlayer()
+	{
+		m_StopPlayer = false;
 	}
 	public  void PlayerIsDead()
 	{
@@ -78,8 +87,9 @@ public class PlayerInputController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (!m_IsPlayerDead) 
+		if (!m_IsPlayerDead&&!m_StopPlayer) 
 		{
+			
 			GetInput2 ();
 		}
 	}

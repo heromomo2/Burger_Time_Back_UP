@@ -81,7 +81,7 @@ public class MusicController : Singleton<MusicController> {
 	}
 
 	public void EndAudio(){
-		m_AudioSource[0].Stop ();
+		m_MusicAudioSource.Stop ();
 	}
 
 
