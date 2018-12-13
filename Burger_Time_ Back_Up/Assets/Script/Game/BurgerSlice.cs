@@ -73,7 +73,9 @@ public class BurgerSlice : MonoBehaviour {
 			} 
 			else 
 			{
-				transform.position = m_Target;
+				//transform.position = m_Target;
+				transform.position = Vector3.MoveTowards (transform.position, m_Target, m_step); ///  move the target
+
 			}
 		}
 		
