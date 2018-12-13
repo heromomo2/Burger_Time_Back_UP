@@ -3550,7 +3550,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'ResumeGame
+  m_Text: 'Resume Game
 
 
 '
@@ -3570,6 +3570,7 @@ GameObject:
   - component: {fileID: 418497642}
   - component: {fileID: 418497641}
   - component: {fileID: 418497640}
+  - component: {fileID: 418497643}
   m_Layer: 5
   m_Name: GameOverMsgText (2)
   m_TagString: Untagged
@@ -3634,6 +3635,17 @@ RectTransform:
   m_AnchoredPosition: {x: 155, y: -2.69458}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &418497643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 418497639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef35f8da9939f41fab9357d997a96765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &420441351 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4294927059891592, guid: 8adce1f4ef8e341849201c86199d8a94,
@@ -5447,7 +5459,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'ReturnMainMenu
+  m_Text: 'Return
 
 
 '
@@ -5591,6 +5603,7 @@ GameObject:
   - component: {fileID: 622341206}
   - component: {fileID: 622341205}
   - component: {fileID: 622341204}
+  - component: {fileID: 622341207}
   m_Layer: 5
   m_Name: GameOverMsgText (4)
   m_TagString: Untagged
@@ -5657,6 +5670,17 @@ RectTransform:
   m_AnchoredPosition: {x: 155, y: -86.69458}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &622341207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 622341203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef35f8da9939f41fab9357d997a96765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &637906318
 Prefab:
   m_ObjectHideFlags: 0
@@ -7602,6 +7626,7 @@ GameObject:
   - component: {fileID: 892534552}
   - component: {fileID: 892534554}
   - component: {fileID: 892534553}
+  - component: {fileID: 892534555}
   m_Layer: 5
   m_Name: GameOverMsgText (7)
   m_TagString: Untagged
@@ -7666,6 +7691,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 892534551}
+--- !u!114 &892534555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 892534551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef35f8da9939f41fab9357d997a96765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &901750744
 Prefab:
   m_ObjectHideFlags: 0
@@ -9958,6 +9994,7 @@ GameObject:
   - component: {fileID: 1109900534}
   - component: {fileID: 1109900533}
   - component: {fileID: 1109900532}
+  - component: {fileID: 1109900535}
   m_Layer: 5
   m_Name: GameOverMsgText (3)
   m_TagString: Untagged
@@ -10024,6 +10061,17 @@ RectTransform:
   m_AnchoredPosition: {x: 155, y: -46.293213}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1109900535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1109900531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef35f8da9939f41fab9357d997a96765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1110198139 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4955246234367586, guid: 2724a91ad80f24825942ba59e41d76c5,
@@ -11223,6 +11271,7 @@ GameObject:
   - component: {fileID: 1250757991}
   - component: {fileID: 1250757993}
   - component: {fileID: 1250757992}
+  - component: {fileID: 1250757994}
   m_Layer: 5
   m_Name: GameOverMsgText (6)
   m_TagString: Untagged
@@ -11287,6 +11336,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1250757990}
+--- !u!114 &1250757994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1250757990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef35f8da9939f41fab9357d997a96765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1256599267 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4418185987971710, guid: 10b5cae0b6b1246709f53bf05554538d,
@@ -12025,6 +12085,7 @@ GameObject:
   - component: {fileID: 1370241992}
   - component: {fileID: 1370241991}
   - component: {fileID: 1370241990}
+  - component: {fileID: 1370241993}
   m_Layer: 5
   m_Name: GameOverMsgText (1)
   m_TagString: Untagged
@@ -12089,6 +12150,17 @@ RectTransform:
   m_AnchoredPosition: {x: 155, y: 33.30542}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1370241993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1370241989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef35f8da9939f41fab9357d997a96765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1373659073
 Prefab:
   m_ObjectHideFlags: 0
@@ -13631,6 +13703,7 @@ GameObject:
   - component: {fileID: 1532123335}
   - component: {fileID: 1532123334}
   - component: {fileID: 1532123333}
+  - component: {fileID: 1532123336}
   m_Layer: 5
   m_Name: GameOverMsgText (5)
   m_TagString: Untagged
@@ -13695,6 +13768,17 @@ RectTransform:
   m_AnchoredPosition: {x: 155, y: -122.69458}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1532123336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1532123332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef35f8da9939f41fab9357d997a96765, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1536004547
 GameObject:
   m_ObjectHideFlags: 0
@@ -13762,7 +13846,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'QuitGame
+  m_Text: 'Quit Game
 
 
 '
@@ -14526,8 +14610,8 @@ MonoBehaviour:
   - {fileID: 1109900532}
   - {fileID: 622341204}
   - {fileID: 1532123333}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1250757992}
+  - {fileID: 892534553}
 --- !u!1001 &1638641260
 Prefab:
   m_ObjectHideFlags: 0

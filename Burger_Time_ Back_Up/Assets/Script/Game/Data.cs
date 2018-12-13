@@ -99,7 +99,7 @@ public class Data : Singleton<Data> {
 		{
 			for (int i = 0; i < m_MaxSlot; i++)
 			{	
-				MyListOfPlayerName.Add ("PLayer");
+				MyListOfPlayerName.Add ("Player");
 				MyListOfPlayerScore.Add(250);
 			}
 		}

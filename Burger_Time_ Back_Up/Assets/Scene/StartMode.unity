@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'LeaderBoard
+  m_Text: 'Leader Board
 
 '
 --- !u!222 &34056045
@@ -1015,7 +1015,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BurgerTimeBackUP
+  m_Text: Burger Time Back UP
 --- !u!222 &1117846171
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1650,7 +1650,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: QuitGame
+  m_Text: Quit Game
 --- !u!222 &1422521430
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2206,7 +2206,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LeaderBoard
+  m_Text: Leader Board
 --- !u!222 &1931383686
 CanvasRenderer:
   m_ObjectHideFlags: 0
