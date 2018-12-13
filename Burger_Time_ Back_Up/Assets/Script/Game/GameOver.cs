@@ -7,6 +7,8 @@ public class GameOver : MonoBehaviour {
 	private Text m_GameOverTitleText;
 	[SerializeField]
 	private Text m_NewHiscoreText;
+	[SerializeField]
+	private List<Text>m_boardText = new List<Text>();
 	// Use this for initialization
 	void Start () {
 		
@@ -37,39 +39,7 @@ public class GameOver : MonoBehaviour {
 			{
 				m_NewHiscoreText.color = Color.green;
 			}
-
-			switch (Position) 
-			{
-			case 1:
-				m_NewHiscoreText.text = "congratulations You're First place";
-				break;
-			case 2:
-				m_NewHiscoreText.text = "congratulations You're Second place";
-				break;
-			case 3:
-				m_NewHiscoreText.text = "congratulations You're Third place";
-				break;
-			case 4:
-				m_NewHiscoreText.text = "congratulations You're Fourth place";
-				break;
-			case 5:
-				m_NewHiscoreText.text = "congratulations You're Fifth place";
-				break;
-			case 6:
-				m_NewHiscoreText.text = "congratulations You're Sixth place";
-				break;
-			case 7:
-				m_NewHiscoreText.text = "congratulations You're Seventh place";
-				break;
-			default:
-				print ("Incorrect Slot");
-				break;
-			}
 		}
-		else 
-		{
-			m_NewHiscoreText.text = "";
-		}
-		
+			
 	}
 }
