@@ -154,6 +154,7 @@ public class GameController : MonoBehaviour {
 				if (!m_DidYouGotBounsPoint) 
 				{
 					m_GameHudController.IncreaseScoreByUnusedPeper ();
+					m_GameHudController.IncreaseScoreByClearingLevel ();
 					m_DidYouGotBounsPoint = true;
 					MusicController.Instance.EndAudio ();
 					MusicController.Instance.SwitchSFX (3, 2);
