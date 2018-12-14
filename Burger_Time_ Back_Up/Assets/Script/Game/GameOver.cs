@@ -60,6 +60,7 @@ public class GameOver : MonoBehaviour {
 			case 1:
 				//BlinkText ();
 				m_boardText [0].color = Color.red;
+				StartCoroutine(BlinkText (0));
 //				temp = m_boardText [0].text;
 //				BlinkText (, temp);
 				break;
@@ -110,7 +111,7 @@ public class GameOver : MonoBehaviour {
 			for (int i = 0; i < 7; i++) 
 			{
 				m_boardText [i].text = "";
-				m_NewHiscoreText.text = "";
+				m_NewHiscoreText.text = "You're score is too low";
 			}
 			
 		}
@@ -118,7 +119,7 @@ public class GameOver : MonoBehaviour {
 			
 	}
 
-//	private string mytimerflash (string content)
+//	private Text mytimerflash (string content)
 //	{
 //		while(true){
 //			timer -= Time.deltaTime;
@@ -136,15 +137,19 @@ public class GameOver : MonoBehaviour {
 //		
 //	}
 
-	private IEnumerator BlinkText ( int i , string temp){
+	private IEnumerator BlinkText ( int i ){
 		//blink it forever. You can set a terminating condition depending upon your requirement
-		while(true){
+		while( true )
+		{
+			Color tempcolor2 = new Color(0,0,0,0);
+			Color tempcolor1 = m_boardText[i].color;
+			Debug.Log(" yes it's in the loop");
 			//set the Text's text to blank
-			m_boardText[i].text = "";
+			m_boardText[i].color =  tempcolor2;
 			//display blank text for 0.5 seconds
 			yield return new WaitForSeconds(0.5f);
-			//display “I AM FLASHING TEXT” for the next 0.5 seconds
-			m_boardText[i].text = temp;
+//			//display “I AM FLASHING TEXT” for the next 0.5 seconds
+			m_boardText[i].color = tempcolor1;
 			yield return new WaitForSeconds(0.5f);
 		}
 	}
