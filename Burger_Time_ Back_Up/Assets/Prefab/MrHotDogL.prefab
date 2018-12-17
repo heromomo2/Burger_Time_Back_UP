@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IsEnemyMoving: 1
   m_PlayerPosition: {fileID: 0}
-  m_speed: 0.02
+  m_speed: 0.5
   m_AmountTimeStun: 5
   m_TargetNode: {fileID: 0}
   m_LastNode: {fileID: 0}
