@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour {
 	private string m_text = null;
 	private	float  m_timer =  0.5f;
 	private bool   m_isflash  = false;
-
+	private bool   m_blik = false;
 	private Timer m_TImer;
 	private int m_Index = 0;
 	private Coroutine m_Coroutine;
@@ -67,6 +67,7 @@ public class GameOver : MonoBehaviour {
 				m_boardText [i].text = m_text;
 				m_boardText [i].color = Color.white;
 				m_isflash = false;
+				m_blik = false;
 			}
 		
 			switch (Position)
@@ -77,6 +78,7 @@ public class GameOver : MonoBehaviour {
 				//m_Coroutine = StartCoroutine(BlinkText (0));
 				m_Index = 0;
 				trueBlink ();
+				m_blik = true;
 //				temp = m_boardText [0].text;
 //				BlinkText (, temp);
 				break;
@@ -139,60 +141,36 @@ public class GameOver : MonoBehaviour {
 			
 	}
 
-//	private Text mytimerflash (string content)
-//	{
-//		while(true){
-//			timer -= Time.deltaTime;
-//			return "";
-//			if(timer >= 0)
-//			{
-//				timer = 0.5f;
-//			
-//			}
-//			else
-//			{
-//			 return content ;
-//			}
-//		}
-//		
-//	}
+
 	private  void trueBlink ()
 	{
-		if (m_TImer == null) {
+		if (m_TImer == null) 
+		{
 
-			m_TImer = new Timer (1);
+			m_TImer = new Timer (2.5f);
 			m_TImer.m_OnDone += trueBlink;
 
 			m_boardText [m_Index].color = Color.red;
 			m_isflash = false;
-		} else {
-//			Color tempcolor2 = new Color(0,0,0,0);
-//			Color tempc//or1 = m_boardText[m_Index].color;
-//			m_timer -= Time.deltaTime;
-//			m_boardText [m_Index].color = tempcolor2;
-//			if(m_timer > 0)
-//			{
-//				m_boardText [m_Index].color = tempcolor1;
-//			}
-
-			if(m_isflash)
+		} 
+		else 
+		{
+			while (m_blik) 
 			{
-				m_boardText [m_Index].color = Color.red;
-				m_isflash = false;
-				m_TImer.Restart ();
+				if (m_isflash && m_TImer.IsDone) 
+				{
+					m_boardText [m_Index].color = Color.red;
+					m_isflash = false;
+					m_TImer.Restart ();
+				} 
+				else
+				{
+					m_boardText [m_Index].color = Color.green;
+					m_isflash = true;
+					m_TImer.Restart ();
+				}
 			}
-			else{
-				m_boardText [m_Index].color = Color.clear;
-				m_isflash = true;
-				m_TImer.Restart ();
-			}
-
-			//m_TImer.Restart ();
 		}
-
-
-
-
 
 	}
 
