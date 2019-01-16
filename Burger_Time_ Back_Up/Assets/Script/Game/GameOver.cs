@@ -9,6 +9,7 @@ public class GameOver : MonoBehaviour {
 	private Text m_NewHiscoreText;
 	[SerializeField]
 	private List<Text>m_boardText = new List<Text>();
+	private Text m_BinkText;
 	private string m_text = null;
 	private	float  m_timer =  0.5f;
 	private bool   m_isflash  = false;
@@ -28,6 +29,26 @@ public class GameOver : MonoBehaviour {
 		{
 			m_TImer.Update ();
 	    }
+
+		if (m_BinkText != null)
+		{
+			Color tempcolor = m_BinkText.color;
+			float t = Time.time % 1;
+			float answer; 
+			if (t > 0.5f) 
+			{
+				answer = 0;
+			}
+			else 
+			{
+				answer = 1;
+
+			}
+		//	tempcolor.a = Mathf.Lerp(0,1, t > 0.5f ? 0:1);
+			//tempcolor.a = Mathf.Lerp(0,1,answer);
+			tempcolor = Color.Lerp(Color.blue,Color.red , t > 0.5f ? 0:1);
+			m_BinkText.color = tempcolor;
+		}
 	}
 
 	void OnDestroy()
@@ -70,64 +91,66 @@ public class GameOver : MonoBehaviour {
 				m_blik = false;
 			}
 		
-			switch (Position)
-			{
-			case 1:
-				//BlinkText ();
-				m_boardText [0].color = Color.red;
-				//m_Coroutine = StartCoroutine(BlinkText (0));
-				m_Index = 0;
-				trueBlink ();
-				m_blik = true;
-//				temp = m_boardText [0].text;
-//				BlinkText (, temp);
-				break;
-			case 2:
-				m_boardText [1].color = Color.red;
-				m_Coroutine = StartCoroutine(BlinkText (1));
-//				temp = m_boardText [1].text;
-//				BlinkText ();
-//				m_boardText [1].text = temp2;
-				break;
-			case 3:
-				m_boardText [2].color = Color.red;
-				m_Coroutine = StartCoroutine(BlinkText (2));
-//				temp = m_boardText [2].text;
-//				BlinkText ();
-//				m_boardText [2].text = temp2;
-				break;
-			case 4:
-				m_boardText [3].color = Color.red;
-				m_Coroutine = StartCoroutine(BlinkText (3));
-//				temp = m_boardText [3].text;
-//				BlinkText ();
-//				m_boardText [3].text = temp2;
-				break;
-			case 5:
-				m_boardText [4].color = Color.red;
-				m_Coroutine = StartCoroutine(BlinkText (4));
-//				temp = m_boardText [4].text;
-//				BlinkText ();
-//				m_boardText [4].text = temp2;
-				break;
-			case 6:
-				m_boardText [5].color = Color.red;
-				m_Coroutine = StartCoroutine(BlinkText (5));
-//				temp = m_boardText [5].text;
-//				BlinkText ();
-//				m_boardText [5].text = temp2;
-				break;
-			case 7:
-				m_boardText [6].color = Color.red;
-				m_Coroutine = StartCoroutine(BlinkText (6));
-//				temp = m_boardText [6].text;
-//				BlinkText ();
-//				m_boardText [6].text = temp2;
-				break;
-			default:
-				Debug.Log (" error in the Gameover");
-				break;
-			}
+			m_BinkText = m_boardText [Position-1];
+			m_BinkText.color = Color.red;
+
+//			switch (Position)
+//			{
+//			case 1:
+//				//BlinkText ();
+//				m_BinkText = m_boardText [0];
+//				//m_Coroutine = StartCoroutine(BlinkText (0));
+//				m_Index = 0;
+//				trueBlink ();
+////				temp = m_boardText [0].text;
+////				BlinkText (, temp);
+//				break;
+//			case 2:
+//				//m_boardText [1].color = Color.red;
+////				m_Coroutine = StartCoroutine(BlinkText (1));
+////				temp = m_boardText [1].text;
+////				BlinkText ();
+////				m_boardText [1].text = temp2;
+//				break;
+//			case 3:
+////				m_boardText [2].color = Color.red;
+////				m_Coroutine = StartCoroutine(BlinkText (2));
+////				temp = m_boardText [2].text;
+////				BlinkText ();
+////				m_boardText [2].text = temp2;
+//				break;
+//			case 4:
+////				m_boardText [3].color = Color.red;
+////				m_Coroutine = StartCoroutine(BlinkText (3));
+////				temp = m_boardText [3].text;
+////				BlinkText ();
+////				m_boardText [3].text = temp2;
+//				break;
+//			case 5:
+////				m_boardText [4].color = Color.red;
+////				m_Coroutine = StartCoroutine(BlinkText (4));
+////				temp = m_boardText [4].text;
+////				BlinkText ();
+////				m_boardText [4].text = temp2;
+//				break;
+//			case 6:
+////				m_boardText [5].color = Color.red;
+////				m_Coroutine = StartCoroutine(BlinkText (5));
+////				temp = m_boardText [5].text;
+////				BlinkText ();
+////				m_boardText [5].text = temp2;
+//				break;
+//			case 7:
+//		//		m_boardText [6].color = Color.red;
+//			//	m_Coroutine = StartCoroutine(BlinkText (6));
+////				temp = m_boardText [6].text;
+////				BlinkText ();
+////				m_boardText [6].text = temp2;
+//				break;
+//			default:
+//				Debug.Log (" error in the Gameover");
+//				break;
+//			}
 
 		}
 		else 
@@ -142,39 +165,47 @@ public class GameOver : MonoBehaviour {
 	}
 
 
-	private  void trueBlink ()
-	{
-		if (m_TImer == null) 
-		{
 
-			m_TImer = new Timer (2.5f);
-			m_TImer.m_OnDone += trueBlink;
 
-			m_boardText [m_Index].color = Color.red;
-			m_isflash = false;
-		} 
-		else 
+
+		private  void trueBlink ()
 		{
-			while (m_blik) 
+			if (m_TImer == null) 
 			{
-				if (m_isflash && m_TImer.IsDone) 
-				{
-					m_boardText [m_Index].color = Color.red;
-					m_isflash = false;
-					m_TImer.Restart ();
-				} 
-				else
-				{
-					m_boardText [m_Index].color = Color.green;
-					m_isflash = true;
-					m_TImer.Restart ();
+	
+				m_TImer = new Timer (1.5f);
+				m_TImer.m_OnDone += trueBlink;
+				//m_boardText [m_Index].color = Color.red;
+			    m_isflash = true;
+			 //   m_blik = true;
+			} 
+			else 
+			{
+//				while (m_blik) 
+//				{
+
+			if (m_isflash) /*&& !m_TImer.m_OnDone) */
+					{
+						m_boardText [m_Index].color = Color.red;
+						m_isflash = false;
+						m_TImer.Restart ();
+					    Debug.LogWarning ("red text");
+					} 
+					else
+					{
+						m_boardText [m_Index].color = Color.green;
+						m_isflash = true;
+						m_TImer.Restart ();
+					    Debug.LogWarning (" green text");
+					}
 				}
-			}
+//			}
+	
 		}
 
-	}
 
-	private IEnumerator BlinkText ( int i ){
+
+/*	private IEnumerator BlinkText ( int i ){
 		//blink it forever. You can set a terminating condition depending upon your requirement
 		//while( true )
 		{
@@ -199,5 +230,5 @@ public class GameOver : MonoBehaviour {
 
 			m_Coroutine = StartCoroutine (BlinkText(i));
 		}
-	}
+	}*/
 }

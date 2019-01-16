@@ -25,7 +25,7 @@ PlayerSettings:
   m_SplashScreenBackgroundAnimationZoom: 0.565
   m_SplashScreenLogoAnimationZoom: 1
   m_SplashScreenBackgroundLandscapeAspect: 1
-  m_SplashScreenBackgroundPortraitAspect: 1
+  m_SplashScreenBackgroundPortraitAspect: 0.9380253
   m_SplashScreenBackgroundLandscapeUvs:
     serializedVersion: 2
     x: 0

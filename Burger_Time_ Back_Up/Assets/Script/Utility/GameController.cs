@@ -187,7 +187,7 @@ public class GameController : MonoBehaviour {
 	IEnumerator GameEndUpdate()
 	{
 		yield return new WaitForSeconds(5);
-		//m_MenuController.LoadA("StartMode");
+		m_MenuController.LoadA("StartMode");
 
 		Debug.Log("We should be at Game Start screen bois");
 	}
