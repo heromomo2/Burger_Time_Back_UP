@@ -48,12 +48,12 @@ public class Data : Singleton<Data> {
 	}
 
 
-	public int GetTopHiscore () 
-	{
-		return MyListOfPlayerScore [0];
-	}
+    public int GetTopHiscore()
+    {
+        return MyListOfPlayerScore[0];
+    }
 
-	public int GetPositionInLeaderboard () 
+    public int GetPositionInLeaderboard () 
 	{
 		return m_PositionInLeaderboard;
 	}
